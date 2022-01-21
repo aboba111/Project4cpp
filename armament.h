@@ -2,33 +2,40 @@
 #include<iostream>
 class armament
 {   protected:
-	std::string nameWeapon;
-	std::string typeWeapon;
-	std::string nameAmmunition;
-	bool active;
-	int damage;
-	int Range;
-	int speed;
-	int  maxAmmunition;
-	int currentAmmunition;
-	int price;
+	std::string nameWeapon="Pattrom";
+	int  maxAmmunition=1000;
+	int currentHeavyAmmunition=1000;
+	int currentLungAmmunition=1000;
+	int price=20;
 public:
-	//virtual void shoot(int x);
-	void recharge();
+	void rechargeHeavy() {
+		currentHeavyAmmunition = maxAmmunition;
+	}
+	void rechargeLung() {
+		currentLungAmmunition = maxAmmunition;
+	}
 
-	bool setActive();
-	int setDamage();
-	int setRange();
-	int setSpeed();
-	int  setMaxAmmunition();
-	int setCurrentAmmunition();
-	int setPrice();
+	int  getMaxAmmunition() {
+		return maxAmmunition;
+	}
+	void setCurrentHeavyAmmunition(int x) {
+		currentHeavyAmmunition=x;
+	}
+	int getCurrentHeavyAmmunition() {
+		return currentHeavyAmmunition;
+	}
+	void setCurrentLungAmmunition(int x) {
+		currentLungAmmunition = x;
+	}
+	int getCurrentLungAmmunition() {
+		return currentLungAmmunition;
+	}
+	int getPrice() {
+		return price;
+	};
+	std::string getNameWeapon() {
+		return nameWeapon;
+	};
 
-	int getDamage();
-	int getRange();
-	int getSpeed();
-	int  getMaxAmmunition();
-	int getCurrentAmmunition();
-	int getPrice();
 };
 

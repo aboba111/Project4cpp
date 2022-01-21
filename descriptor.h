@@ -7,7 +7,8 @@ class descriptor
 	int damage;
 	int numMoney;
 public:
-	void byVessel();
+	void byVessel() {
+	};
 	void byAirplane();
 	void byWeapon();
 	void deleteVessel(std::string x);

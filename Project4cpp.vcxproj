@@ -141,12 +141,11 @@
   <ItemGroup>
     <ClCompile Include="aircraft_carrier.cpp" />
     <ClCompile Include="airplane.cpp" />
+    <ClCompile Include="air_cruiser.cpp" />
     <ClCompile Include="armament.cpp" />
     <ClCompile Include="armed_cruiser.cpp" />
     <ClCompile Include="descriptor.cpp" />
     <ClCompile Include="fighter.cpp" />
-    <ClCompile Include="heavy_armament.cpp" />
-    <ClCompile Include="lung_armament.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="stormtrooper.cpp" />
@@ -157,12 +156,12 @@
   <ItemGroup>
     <ClInclude Include="aircraft_carrier.h" />
     <ClInclude Include="airplane.h" />
+    <ClInclude Include="air_cruiser.h" />
     <ClInclude Include="armament.h" />
     <ClInclude Include="armed_cruiser.h" />
     <ClInclude Include="descriptor.h" />
     <ClInclude Include="fighter.h" />
-    <ClInclude Include="heavy_armament.h" />
-    <ClInclude Include="lung_armament.h" />
+    <ClInclude Include="MyVector.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="stormtrooper.h" />
     <ClInclude Include="table.h" />

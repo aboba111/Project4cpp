@@ -4,36 +4,45 @@
 #include<iostream>
 #include <vector>
 
-class armed_cruiser:public vessel
+class armed_cruiser: virtual public  vessel
 {
 protected:
 	armament* mass;
+	std::string typeAttack;
 public:
-	armed_cruiser():vessel() {};
-	/*armed_cruiser(std::string nameVessel,
-		std::string userName,
-		char type,
-		int longs,
-		int hp,
-		std::pair <int, int> currentXy, std::pair <int, int> followXy,
-		int price,
-		warehouse* typeWarehouse,armament* mass) : vessel(nameVessel,
-		userName,
-		type,
-		longs,
-		hp,
-		currentXy,
-		followXy,
-		price,
-	    typeWarehouse) {
-		this->mass = mass;
+	armed_cruiser():vessel() {
+		warehouse* W = new warehouse;
+		this->typeWarehouse = W;
+		armament* M = new armament;
+		this->mass = M;
+		this->hp=1000;
+		this-> currentXy= currentXy;
+		this-> price= 100;
+		this-> longes= 2;
+		this-> atackHp= 4000;
+		this-> speed= 1;
 
-	}*/
-	void shotShip(std::pair<int,int> xy,int x);
-	void shotAirplane(std::pair<int, int> xy, int x);
-	void recharge();
-	void refreshAmmunition(int id) override {};
-	//void vessel::refreshAmmunition(int id) override {};
+	}
+
+
+	void refreshAmmunition(std::string type) override {
+		mass->rechargeHeavy();
+		mass->rechargeLung();
+		typeWarehouse->recharg(type, mass->getMaxAmmunition());
+
+	}
+	std::string getTypeAttack() {
+		return typeAttack;
+	}
+
+	armament* getMass(){
+		return mass;
+	}
+	~armed_cruiser() {
+		delete getWarehouse();
+		delete getMass();
+	}
+
 
 };
 

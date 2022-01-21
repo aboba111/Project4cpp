@@ -4,6 +4,14 @@
 class stormtrooper:public airplane
 {   public:
 	stormtrooper() {};
-	void   attack() 	override { }
+	int attack(object* X) override {
+		if (X->getType() == 'A' || X->getType() == 'a' || X->getType() == 'B' || X->getType() == 'b' || X->getType() == 'D' || X->getType() == 'd') {
+			mass->setCurrentLungAmmunition(0);
+			return getAtackHp();
+			return atackHp;
+		}
+		else { return 0; }
+
+	}
 };
 

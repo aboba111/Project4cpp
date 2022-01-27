@@ -1,1 +1,1 @@
-#include "fighter.h"
+#include "Fighter.h"

@@ -1,47 +1,41 @@
 #pragma once
-#include"aircraft_carrier.h"
-#include"armed_cruiser.h"
-class air_cruiser : public aircraft_carrier, public armed_cruiser{
- private:
 
+#include "Aircraft_carrier.h"
+#include "Armed_cruiser.h"
+
+class Air_cruiser : public Aircraft_carrier, public Armed_cruiser {
+private:
 
 
 public:
-	air_cruiser() :aircraft_carrier(), armed_cruiser() {
-		warehouse* W = new warehouse;
-		this->typeWarehouse = W;
-		armament* M = new armament;
-			this->mass = M;
-			this->hp = 1500;
-			this->currentXy = currentXy;
-			this->price = 160;
-			this->longes = 2;
-			this->atackHp = 4000;
-			this->speed = 1;
-			this->maxAirplane = 3;
-			this->countAirplane = 3;
-			if (std::rand() % 2) {
-				fighter* M = new fighter;
-				this->plane = M;
-			}
-			else {
-				stormtrooper* M = new stormtrooper;
-				this->plane = M;
-			}
-			vessel* V = dynamic_cast<vessel*>(this);;
-			getAirplane()->setParent(V);
-		}
+    Air_cruiser(std::pair<int, int>currentXy, char type, bool who, std::string nameVessel) : Aircraft_carrier(hpAirCruiser, currentXy, priceAirCruiser, type, longesAirCruiser, speedAirCruiser, who, nameVessel) , Armed_cruiser(attackHpAirCruiser,hpAirCruiser, currentXy, priceAirCruiser, type, longesAirCruiser, speedAirCruiser, who, nameVessel), Vessel(hpAirCruiser, currentXy, priceAirCruiser, type, longesAirCruiser, speedAirCruiser, who, nameVessel, new Warehouse) {
+    }
 
-	void refreshAmmunition(std::string type)  {
-		aircraft_carrier::refreshAmmunition(type);
-		armed_cruiser::refreshAmmunition(type);
+    void refreshLung() {
+        Aircraft_carrier::refreshLung();
+        Armed_cruiser::refreshLung();
+    };
+    void refreshHeavy() {
+        Aircraft_carrier::refreshHeavy();
+        Armed_cruiser::refreshHeavy();
+    };
 
-	};
+    void refreshLungAirplane() {
+        Aircraft_carrier::refreshLung();
+    }
 
-	~air_cruiser() {
-		delete getWarehouse();
-		delete getMass();
-		delete getAirplane();
-	}
+    void refreshHeavyAirplane() {
+        Aircraft_carrier::refreshHeavy();
+    }
+
+    void refreshLungCruiser(){
+        Armed_cruiser::refreshLung();
+    }
+
+
+    void refreshHeavyCruiser() {
+        Armed_cruiser::refreshHeavy();
+    }
+
 };
 

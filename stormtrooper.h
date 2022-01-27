@@ -1,17 +1,27 @@
 #pragma once
-#include"airplane.h"
 
-class stormtrooper:public airplane
-{   public:
-	stormtrooper() {};
-	int attack(object* X) override {
-		if (X->getType() == 'A' || X->getType() == 'a' || X->getType() == 'B' || X->getType() == 'b' || X->getType() == 'D' || X->getType() == 'd') {
-			mass->setCurrentLungAmmunition(0);
-			return getAtackHp();
-			return atackHp;
-		}
-		else { return 0; }
+#include"Airplane.h"
+#include "Parametres.h"
+class Stormtrooper : public Airplane {
+public:
 
-	}
+    Stormtrooper(std::pair<int, int >currentXy, char type, bool who,
+        Vessel* parent) : Airplane(hpStormtrooper, currentXy, priceStormtrooper, type, longesStormtrooper, attackHpStormtrooper, speedStormtrooper, who, active, new Armament(maxAmmunitionStormtrooper, currentAmmunitionStormtrooper, pattronPrice, pattronLungDamageStormtrooper, volumForAttackStormtrooper), parent) {
+
+}
+
+    void attack(Object *M) override {
+        if (M->getType() == 'A' || M->getType() == 'a' || M->getType() == 'B' || M->getType() == 'b' ||
+            M->getType() == 'D' || M->getType() == 'd') {
+            if (mass->getCurrentAmmunition() < mass->getVolumForAttack())
+                return;
+            mass->attack();
+            M->getDamage(mass->attack());
+        }
+    }
+
+   ~Stormtrooper(){
+        delete mass;
+    }
 };
 

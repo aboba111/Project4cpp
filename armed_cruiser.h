@@ -1,47 +1,79 @@
 #pragma once
-#include"vessel.h"
-#include "armament.h"
-#include<iostream>
+
+#include <iostream>
 #include <vector>
+#include "Vessel.h"
+#include "Armament.h"
+#include "Parametres.h"
+#include "Heavy_Armament.h"
+#include "Lung_Armament.h"
 
-class armed_cruiser: virtual public  vessel
-{
+class Armed_cruiser : virtual public Vessel {
 protected:
-	armament* mass;
-	std::string typeAttack;
+    Armament *lung;
+    Armament* heavy;
+    int attackHp;
+    Armed_cruiser(int attackHp,int hp, std::pair<int, int> currentXy, int price, char type, int longes, int speed, bool who, std::string nameVessel) :Vessel(hp, currentXy, price, type, longes, speed, who, nameVessel, new Warehouse) {
+        this->heavy = new Heavy_Armament(maxAmmunitionArmed, currentHeavyAmmunitionArmed, pattronPrice, pattronHeavyDamageArmed, volumForAttackArmed);
+        this->lung = new Lung_Armament(maxAmmunitionArmed, currentLungAmmunitionArmed, pattronPrice, pattronLungDamageArmed, volumForAttackArmed);
+        this->attackHp = attackHp;
+    }
 public:
-	armed_cruiser():vessel() {
-		warehouse* W = new warehouse;
-		this->typeWarehouse = W;
-		armament* M = new armament;
-		this->mass = M;
-		this->hp=1000;
-		this-> currentXy= currentXy;
-		this-> price= 100;
-		this-> longes= 2;
-		this-> atackHp= 4000;
-		this-> speed= 1;
+    Armed_cruiser(std::pair<int,int>currentXy,char type,bool who,std::string nameVessel) : Vessel(hpArmed,currentXy,priceArmed,type,longesArmed,speedArmed,who,nameVessel,new Warehouse) {
+        this->heavy = new Heavy_Armament(maxAmmunitionArmed, currentHeavyAmmunitionArmed, pattronPrice,pattronHeavyDamageArmed, volumForAttackArmed);
+        this->lung = new Lung_Armament(maxAmmunitionArmed, currentLungAmmunitionArmed, pattronPrice, pattronLungDamageArmed, volumForAttackArmed);
+        this->attackHp = attackHpArmed;
 
-	}
+    }
+
+   
+    void refreshLung() override {
+
+        typeWarehouse->AddPatronToWarehouse((lung->addPattron(typeWarehouse->getSomePatronLung(lung->getMaxAmmunition()))),"lung");
+
+    }
+    void refreshHeavy() override {
+
+        typeWarehouse->AddPatronToWarehouse((heavy->addPattron(typeWarehouse->getSomePatronHeavy(heavy->getMaxAmmunition()))),"heavy");
+
+    }
+
+    void attack(Object* M) {
+
+        if (M->getType() == 'c' || M->getType() == 'C' || M->getType() == 'S' || M->getType() == 's') {
+            if (getLung()->getCurrentAmmunition() < getLung()->getVolumForAttack())
+                return;
+            else {
+                M->getDamage(getLung()->attack());
+            }
+        }
+        else {
+            if (getHeavy()->getCurrentAmmunition() < getHeavy()->getVolumForAttack())
+                return;
+            else {
+                getLung()->attack();
+                M->getDamage(getHeavy()->attack());
+            }
+        }
+
+    }
 
 
-	void refreshAmmunition(std::string type) override {
-		mass->rechargeHeavy();
-		mass->rechargeLung();
-		typeWarehouse->recharg(type, mass->getMaxAmmunition());
+    Armament *getLung() {
+        return lung;
+    }
+    Armament* getHeavy() {
+        return heavy;
+    }
 
-	}
-	std::string getTypeAttack() {
-		return typeAttack;
-	}
+    int getAttackHp() {
+        return attackHp;
+    }
 
-	armament* getMass(){
-		return mass;
-	}
-	~armed_cruiser() {
-		delete getWarehouse();
-		delete getMass();
-	}
+    ~Armed_cruiser() {
+        delete heavy;
+        delete lung;
+    }
 
 
 };

@@ -1,66 +1,78 @@
 #pragma once
-#include"vessel.h"
-#include"airplane.h"
-#include<vector>
-#include "fighter.h"
-#include "stormtrooper.h"
-class aircraft_carrier :virtual public vessel
 
-{
+#include <vector>
+#include "Vessel.h"
+#include "Airplane.h"
+#include "Fighter.h"
+#include "Stormtrooper.h"
+#include "Parametres.h"
+class Aircraft_carrier : virtual public Vessel {
 protected:
-	int maxAirplane;
-	int countAirplane;
-	airplane* plane;
-	
+    Airplane *plane;
+    Aircraft_carrier(int hp, std::pair<int, int> currentXy, int price, char type, int longes, int speed, bool who, std::string nameVessel) :Vessel(hp, currentXy, price, type, longes, speed, who, nameVessel, new Warehouse) {
+        if (rand() % 2) {
+            if (who == true)
+                this->plane = new Fighter(currentXy, 'C', who, this);
+            else
+                this->plane = new Fighter(currentXy, 'c', who, this);
+        }
+        else {
+            if (who == true)
+                this->plane = new Stormtrooper(currentXy, 'S', who, this);
+            else
+                this->plane = new Stormtrooper(currentXy, 's', who, this);
+        }
+    }
 
 public:
-	aircraft_carrier():vessel()  {
-		warehouse* W = new warehouse;
-		this->typeWarehouse = W;
-		this->hp = 1500;
-		this->currentXy = currentXy;
-		this->price = 160;
-		this->longes = 1;
-		this->atackHp = 40;
-		this->speed = 1;
-		this->maxAirplane = 3;
-		this->countAirplane = 3;
-		if (std::rand() % 2) {
-			this->plane = new fighter;
-		}
-		else {
-			this->plane = new stormtrooper;
-		}
-		vessel* M = dynamic_cast<vessel*>(this);
-		this->plane->setParent(nullptr);
-	
-	} 
+    Aircraft_carrier(std::pair<int,int>currentXy,char type,bool who,std::string nameVessel) : Vessel(hpAircraft, currentXy, priceAircraft, type, longesAircraft, speedAircraft, who, nameVessel, new Warehouse){
+     
+        if (rand() % 2) {
+            if(who==true)
+            this->plane = new Fighter(currentXy,'C', who, this);
+            else
+            this->plane = new Fighter(currentXy, 'c', who, this);
+        }
+        else {
+            if (who == true)
+            this->plane = new Stormtrooper(currentXy,'S', who, this);
+            else
+            this->plane = new Stormtrooper(currentXy, 's', who, this);
+        }
+    }
 
-	airplane* getAirplane() {
-		return plane;
-	}
+    Airplane *getAirplane() {
+        return plane;
+    }
 
-	void setAirplane(airplane* air) {
-		plane = air;
+    void setAirplane(Airplane *air) {
+        plane = air;
 
-	}
-	
-	void startAirplane(int id) {
-		countAirplane = maxAirplane - 1;
-	}
-	void refreshAmmunition(std::string str) override {
-		if (plane->getActive() == false) {
-			plane->getMass()->rechargeLung();
-			typeWarehouse->recharg(str, plane->getMass()->getMaxAmmunition());
-		}
-		if (plane->getActive() == false) {
-			plane->getMass()->rechargeHeavy();
-			typeWarehouse->recharg(str, plane->getMass()->getMaxAmmunition());
-		}
-	}
-	~aircraft_carrier() {
-		delete getWarehouse();
-		delete getAirplane();
-	}
+    }
+
+    void refreshLung() override {
+        if (plane->getType() == 'c' || plane->getType() == 'C')
+            return;
+        Armament* lung =plane->getMass();
+        if (!plane->getActive()) {
+            typeWarehouse->AddPatronToWarehouse((lung->addPattron(typeWarehouse->getSomePatronLung(lung->getMaxAmmunition()))), "lung");
+        }
+    }
+    void refreshHeavy() override {
+        if (plane->getType() == 's' || plane->getType() == 'S')
+            return;
+        Armament* heavy = plane->getMass();
+        if (!plane->getActive()) {
+            typeWarehouse->AddPatronToWarehouse((heavy->addPattron(typeWarehouse->getSomePatronLung(heavy->getMaxAmmunition()))), "heavy");
+        }
+    }
+
+    void startAirplane() {
+        plane->setActive(true);
+    }
+
+    ~Aircraft_carrier() {
+        delete plane;
+    }
 };
 

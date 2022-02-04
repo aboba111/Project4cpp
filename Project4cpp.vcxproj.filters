@@ -83,9 +83,6 @@
     <ClInclude Include="Armament.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Vessel.h">
-      <Filter>Файлы заголовков\vessel</Filter>
-    </ClInclude>
     <ClInclude Include="Aircraft_carrier.h">
       <Filter>Файлы заголовков\vessel</Filter>
     </ClInclude>
@@ -117,6 +114,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Heavy_Armament.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Vessel.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

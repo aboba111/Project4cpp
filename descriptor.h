@@ -6,49 +6,36 @@
 
 class Descriptor {
 protected:
-    Table* X;
-    int damage=0;
-    int lostMoney = 0;
-    int numMoney=10000;
-    int coordinate = 2;
+    Table* X=new Table;
+    int countMyFinish=0;
+    int countOponentFinish=0;
+    int Mydamage=0;
+    int Oponentdamage = 0;
+    int numMyMoney=10000;
+    int numOponentMoney = 10000;
+    int MaxDamage = 4000;
+    int MaxFinishVessel = 3;
 public:
-    void byObject(char type) {
-        if(type=='A')
-        numMoney -=priceAircraft;
-        if(type=='B')
-        numMoney -= priceArmed;
-        if(type=='D')
-        numMoney -= priceAirCruiser;
+    int byObject(int x, bool who);
 
 
-    };
+    void whoFinish(int x, bool who);
 
-    void byPattron(int price) {
-        numMoney-=price ;
+    void damage(int x, bool who);
 
-    }
-    void addDamage(int x) {
-        lostMoney += x;
-    }
-
-    void win(int y,bool who) {
-        if (who) {
-            if (y < coordinate)
-                std::cout << "you wine" << std::endl;
-        }
-        else {
-            if (y <= 0)
-                std::cout << "you lose" << std::endl;
-        }
-
-    };
+    int win();
    
-    Table* getDesk() {
-        return X;
-    }
-    int getMoney() {
-        return numMoney;
-    }
+    Table* getDesk();
+    void setDesk(Table* table);
+    int getMyMoney();
+    int getOponentMoney();
+    int getMyDamage();
+
+    int getOponentDamage();
+
+    int getMyVessel();
+
+    int getOponentVessel();
 
 };
 

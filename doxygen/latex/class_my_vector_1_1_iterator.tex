@@ -1,0 +1,64 @@
+\hypertarget{class_my_vector_1_1_iterator}{}\doxysection{My\+Vector\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+::Iterator Class Reference}
+\label{class_my_vector_1_1_iterator}\index{MyVector$<$ T $>$::Iterator@{MyVector$<$ T $>$::Iterator}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_ac892df6fe45d9ff9fa9b03a2d586ff71}\label{class_my_vector_1_1_iterator_ac892df6fe45d9ff9fa9b03a2d586ff71}} 
+using {\bfseries iterator\+\_\+category} = std\+::forward\+\_\+iterator\+\_\+tag
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_afbe24b50708dd940c546f1511f98eba1}\label{class_my_vector_1_1_iterator_afbe24b50708dd940c546f1511f98eba1}} 
+using {\bfseries difference\+\_\+type} = std\+::ptrdiff\+\_\+t
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_a56500b36f55d49fb81a0c6119304df15}\label{class_my_vector_1_1_iterator_a56500b36f55d49fb81a0c6119304df15}} 
+using {\bfseries value\+\_\+type} = T
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_a96986678d6d2057d28fb15a107b9c38c}\label{class_my_vector_1_1_iterator_a96986678d6d2057d28fb15a107b9c38c}} 
+using {\bfseries pointer} = T $\ast$
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_a6d163c108b5bbe7bfd7689e2a7b162dd}\label{class_my_vector_1_1_iterator_a6d163c108b5bbe7bfd7689e2a7b162dd}} 
+using {\bfseries reference} = T \&
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_ac339b990eb724af8a5da18bd70dee40b}\label{class_my_vector_1_1_iterator_ac339b990eb724af8a5da18bd70dee40b}} 
+{\bfseries Iterator} (pointer ptr)
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_adb92dd045dadb1049ce5dd81109f8015}\label{class_my_vector_1_1_iterator_adb92dd045dadb1049ce5dd81109f8015}} 
+{\bfseries Iterator} (\mbox{\hyperlink{class_my_vector_1_1_iterator}{Iterator}} \&\&other) noexcept
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_aaabac917f5d404d76ac00946f51bc346}\label{class_my_vector_1_1_iterator_aaabac917f5d404d76ac00946f51bc346}} 
+{\bfseries Iterator} (\mbox{\hyperlink{class_my_vector_1_1_iterator}{Iterator}} const \&iterator)
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_a4feef61b28c723743cc2d65210dbefd2}\label{class_my_vector_1_1_iterator_a4feef61b28c723743cc2d65210dbefd2}} 
+reference {\bfseries operator$\ast$} () const
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_a5beaabe9cbface50418305039edf5cf2}\label{class_my_vector_1_1_iterator_a5beaabe9cbface50418305039edf5cf2}} 
+pointer {\bfseries operator-\/$>$} ()
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_af6d16c55e4c85133c97c56f79a726c08}\label{class_my_vector_1_1_iterator_af6d16c55e4c85133c97c56f79a726c08}} 
+\mbox{\hyperlink{class_my_vector_1_1_iterator}{Iterator}} \& {\bfseries operator++} ()
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_a969085ce85aeccbd6e7d264bf78eff00}\label{class_my_vector_1_1_iterator_a969085ce85aeccbd6e7d264bf78eff00}} 
+int {\bfseries operator-\/} (const \mbox{\hyperlink{class_my_vector_1_1_iterator}{Iterator}} \&other) const
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_a89dc9ebf986cf82c19cba142e07a7384}\label{class_my_vector_1_1_iterator_a89dc9ebf986cf82c19cba142e07a7384}} 
+\mbox{\hyperlink{class_my_vector_1_1_iterator}{Iterator}} {\bfseries operator+} (int i)
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_a386cc89c57c94290e355ad7fe7af83a9}\label{class_my_vector_1_1_iterator_a386cc89c57c94290e355ad7fe7af83a9}} 
+const \mbox{\hyperlink{class_my_vector_1_1_iterator}{Iterator}} {\bfseries operator++} (int)
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_adf9a9358b475317bd816d7b47a0f5cd1}\label{class_my_vector_1_1_iterator_adf9a9358b475317bd816d7b47a0f5cd1}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{class_my_vector_1_1_iterator}{Iterator}} \&a, const \mbox{\hyperlink{class_my_vector_1_1_iterator}{Iterator}} \&b)
+\item 
+\mbox{\Hypertarget{class_my_vector_1_1_iterator_a27aed9f3ea67a677964fa51de28a5824}\label{class_my_vector_1_1_iterator_a27aed9f3ea67a677964fa51de28a5824}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{class_my_vector_1_1_iterator}{Iterator}} \&a, const \mbox{\hyperlink{class_my_vector_1_1_iterator}{Iterator}} \&b)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+My\+Vector.\+h\end{DoxyCompactItemize}

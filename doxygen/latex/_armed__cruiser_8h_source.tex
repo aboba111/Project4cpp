@@ -1,0 +1,85 @@
+\hypertarget{_armed__cruiser_8h_source}{}\doxysection{Armed\+\_\+cruiser.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Vessel.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Armament.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Parametres.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Heavy\_Armament.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}Lung\_Armament.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_armed__cruiser}{Armed\_cruiser}} : \textcolor{keyword}{virtual} \textcolor{keyword}{public} \mbox{\hyperlink{class_vessel}{Vessel}} \{}
+\DoxyCodeLine{12 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_armament}{Armament}} *lung;}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_armament}{Armament}}* heavy;}
+\DoxyCodeLine{15     \textcolor{keywordtype}{int} attackHp;}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_armed__cruiser}{Armed\_cruiser}}(\textcolor{keywordtype}{int} attackHp,\textcolor{keywordtype}{int} hp, std::pair<int, int> currentXy, \textcolor{keywordtype}{int} price, \textcolor{keywordtype}{char} type, \textcolor{keywordtype}{int} longes, \textcolor{keywordtype}{int} speed, \textcolor{keywordtype}{bool} who, std::string nameVessel) :\mbox{\hyperlink{class_vessel}{Vessel}}(hp, currentXy, price, type, longes, speed, who, nameVessel, \textcolor{keyword}{new} \mbox{\hyperlink{class_warehouse}{Warehouse}}) \{}
+\DoxyCodeLine{17         this-\/>heavy = \textcolor{keyword}{new} \mbox{\hyperlink{class_heavy___armament}{Heavy\_Armament}}(maxAmmunitionArmed, currentHeavyAmmunitionArmed, pattronPrice, pattronHeavyDamageArmed, volumForAttackArmed);}
+\DoxyCodeLine{18         this-\/>lung = \textcolor{keyword}{new} \mbox{\hyperlink{class_lung___armament}{Lung\_Armament}}(maxAmmunitionArmed, currentLungAmmunitionArmed, pattronPrice, pattronLungDamageArmed, volumForAttackArmed);}
+\DoxyCodeLine{19         this-\/>attackHp = attackHp;}
+\DoxyCodeLine{20     \}}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_armed__cruiser}{Armed\_cruiser}}(std::pair<int,int>currentXy,\textcolor{keywordtype}{char} type,\textcolor{keywordtype}{bool} who,std::string nameVessel) : \mbox{\hyperlink{class_vessel}{Vessel}}(hpArmed,currentXy,priceArmed,type,longesArmed,speedArmed,who,nameVessel,\textcolor{keyword}{new} \mbox{\hyperlink{class_warehouse}{Warehouse}}) \{}
+\DoxyCodeLine{23         this-\/>heavy = \textcolor{keyword}{new} \mbox{\hyperlink{class_heavy___armament}{Heavy\_Armament}}(maxAmmunitionArmed, currentHeavyAmmunitionArmed, pattronPrice,pattronHeavyDamageArmed, volumForAttackArmed);}
+\DoxyCodeLine{24         this-\/>lung = \textcolor{keyword}{new} \mbox{\hyperlink{class_lung___armament}{Lung\_Armament}}(maxAmmunitionArmed, currentLungAmmunitionArmed, pattronPrice, pattronLungDamageArmed, volumForAttackArmed);}
+\DoxyCodeLine{25         this-\/>attackHp = attackHpArmed;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29    }
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} refreshLung()\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         typeWarehouse-\/>AddPatronToWarehouse((lung-\/>addPattron(typeWarehouse-\/>getSomePatronLung(lung-\/>getMaxAmmunition()))),\textcolor{stringliteral}{"{}lung"{}});}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \}}
+\DoxyCodeLine{35     \textcolor{keywordtype}{void} refreshHeavy()\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         typeWarehouse-\/>AddPatronToWarehouse((heavy-\/>addPattron(typeWarehouse-\/>getSomePatronHeavy(heavy-\/>getMaxAmmunition()))),\textcolor{stringliteral}{"{}heavy"{}});}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} attack(\mbox{\hyperlink{class_object}{Object}}* M) \{}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         \textcolor{keywordflow}{if} (M-\/>getType() == \textcolor{charliteral}{'c'} || M-\/>getType() == \textcolor{charliteral}{'C'} || M-\/>getType() == \textcolor{charliteral}{'S'} || M-\/>getType() == \textcolor{charliteral}{'s'}) \{}
+\DoxyCodeLine{44             \textcolor{keywordflow}{if} (getLung()-\/>getCurrentAmmunition() < getLung()-\/>getVolumForAttack())}
+\DoxyCodeLine{45                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{46             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{47                 M-\/>getDamage(getLung()-\/>attack());}
+\DoxyCodeLine{48             \}}
+\DoxyCodeLine{49         \}}
+\DoxyCodeLine{50         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{51             \textcolor{keywordflow}{if} (getHeavy()-\/>getCurrentAmmunition() < getHeavy()-\/>getVolumForAttack())}
+\DoxyCodeLine{52                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{53             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{54                 getLung()-\/>attack();}
+\DoxyCodeLine{55                 M-\/>getDamage(getHeavy()-\/>attack());}
+\DoxyCodeLine{56             \}}
+\DoxyCodeLine{57         \}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \mbox{\hyperlink{class_armament}{Armament}} *getLung() \{}
+\DoxyCodeLine{63         \textcolor{keywordflow}{return} lung;}
+\DoxyCodeLine{64     \}}
+\DoxyCodeLine{65     \mbox{\hyperlink{class_armament}{Armament}}* getHeavy() \{}
+\DoxyCodeLine{66         \textcolor{keywordflow}{return} heavy;}
+\DoxyCodeLine{67     \}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \textcolor{keywordtype}{int} getAttackHp() \{}
+\DoxyCodeLine{70         \textcolor{keywordflow}{return} attackHp;}
+\DoxyCodeLine{71     \}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \mbox{\hyperlink{class_armed__cruiser}{\string~Armed\_cruiser}}() \{}
+\DoxyCodeLine{74         \textcolor{keyword}{delete} heavy;}
+\DoxyCodeLine{75         \textcolor{keyword}{delete} lung;}
+\DoxyCodeLine{76     \}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \};}
+\DoxyCodeLine{80 }
+
+\end{DoxyCode}

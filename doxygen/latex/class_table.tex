@@ -1,0 +1,94 @@
+\hypertarget{class_table}{}\doxysection{Table Class Reference}
+\label{class_table}\index{Table@{Table}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_table_a97ed92cbd777eb37332ef4c7fe1d886d}\label{class_table_a97ed92cbd777eb37332ef4c7fe1d886d}} 
+void {\bfseries add\+Vessels} (char type, int position, const std\+::string \&name)
+\item 
+\mbox{\Hypertarget{class_table_ae331a910876d8839db681ffa6621906b}\label{class_table_ae331a910876d8839db681ffa6621906b}} 
+void {\bfseries clean} ()
+\item 
+\mbox{\Hypertarget{class_table_a08c1bb611ee8fe68be424c5e18706d1b}\label{class_table_a08c1bb611ee8fe68be424c5e18706d1b}} 
+void {\bfseries show} (char type, int x, int y)
+\item 
+\mbox{\Hypertarget{class_table_a2973b86ae7f90a58e1a92af111bdde29}\label{class_table_a2973b86ae7f90a58e1a92af111bdde29}} 
+void {\bfseries refresh\+All\+Objects} ()
+\item 
+\mbox{\Hypertarget{class_table_abdc17d030c1d20b1aec74b2573a8c3d5}\label{class_table_abdc17d030c1d20b1aec74b2573a8c3d5}} 
+int {\bfseries start\+Airplane} (int x, int y, char type)
+\item 
+\mbox{\Hypertarget{class_table_abb1d74e7f7fe3bcd949a95880bdd000f}\label{class_table_abb1d74e7f7fe3bcd949a95880bdd000f}} 
+\mbox{\hyperlink{class_object}{Object}} $\ast$ {\bfseries get\+Info} (int x, int y)
+\item 
+\mbox{\Hypertarget{class_table_a1ce695dac627679ec64049ba658f09de}\label{class_table_a1ce695dac627679ec64049ba658f09de}} 
+void {\bfseries delete\+Vessel\+Map} (int x, int y)
+\item 
+\mbox{\Hypertarget{class_table_a69d674bc006d0e4340d676122c784950}\label{class_table_a69d674bc006d0e4340d676122c784950}} 
+void {\bfseries add\+Vessel\+Map} (int x, int y, \mbox{\hyperlink{class_object}{Object}} $\ast$vessel)
+\item 
+\mbox{\Hypertarget{class_table_ae83678fdff4191890d421f35796a09fc}\label{class_table_ae83678fdff4191890d421f35796a09fc}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_coordinate}{Coordinate}} $>$ {\bfseries get\+Map} ()
+\item 
+\mbox{\Hypertarget{class_table_af38230f13e440b3c263467cc5306e9aa}\label{class_table_af38230f13e440b3c263467cc5306e9aa}} 
+void {\bfseries show\+My\+Object} (char type)
+\item 
+\mbox{\hyperlink{class_my_vector}{My\+Vector}}$<$ \mbox{\hyperlink{class_airplane}{Airplane}} $\ast$ $>$ \mbox{\hyperlink{class_table_ad62a16e1eb003c707a6734b81b2ba192}{return\+Airplane}} (\mbox{\hyperlink{struct_table_vessel}{Table\+Vessel}} $\ast$vessels, bool active)
+\item 
+\mbox{\Hypertarget{class_table_a3ec64ee96368db0eef732228d43b4659}\label{class_table_a3ec64ee96368db0eef732228d43b4659}} 
+void {\bfseries create\+Random\+Flot} (const std\+::string \&who)
+\item 
+\mbox{\Hypertarget{class_table_a34f3bab6f3336b548473212bdb5b0a78}\label{class_table_a34f3bab6f3336b548473212bdb5b0a78}} 
+\mbox{\hyperlink{struct_table_vessel}{Table\+Vessel}} $\ast$ {\bfseries get\+My\+Opponent\+Vessel} ()
+\item 
+\mbox{\Hypertarget{class_table_a483e84fe4e98ec37fc20115dfbd5e922}\label{class_table_a483e84fe4e98ec37fc20115dfbd5e922}} 
+\mbox{\hyperlink{struct_table_vessel}{Table\+Vessel}} $\ast$ {\bfseries get\+My\+Vessel} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_table_af33bc9a30de29176c4317f8071470784}\label{class_table_af33bc9a30de29176c4317f8071470784}} 
+static int {\bfseries coordinate\+To\+Index} (int x, int y)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_table_a5ede5c4dc608e83ab8e6e932271b546d}\label{class_table_a5ede5c4dc608e83ab8e6e932271b546d}} 
+struct \mbox{\hyperlink{struct_table_vessel}{Table\+Vessel}} {\bfseries my\+Vessel}
+\item 
+\mbox{\Hypertarget{class_table_a6ddbd56c879d8743dccec3c38d7d7b09}\label{class_table_a6ddbd56c879d8743dccec3c38d7d7b09}} 
+struct \mbox{\hyperlink{struct_table_vessel}{Table\+Vessel}} {\bfseries my\+Opponent\+Vessel}
+\item 
+\mbox{\Hypertarget{class_table_a0843a35e5ea224e9ff338ef41e2e149e}\label{class_table_a0843a35e5ea224e9ff338ef41e2e149e}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_coordinate}{Coordinate}} $>$ {\bfseries table\+Map}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_table_ac918f26b20e38301454867c16f9494c5}\label{class_table_ac918f26b20e38301454867c16f9494c5}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&out, const \mbox{\hyperlink{class_table}{Table}} \&map)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_table_ad62a16e1eb003c707a6734b81b2ba192}\label{class_table_ad62a16e1eb003c707a6734b81b2ba192}} 
+\index{Table@{Table}!returnAirplane@{returnAirplane}}
+\index{returnAirplane@{returnAirplane}!Table@{Table}}
+\doxysubsubsection{\texorpdfstring{returnAirplane()}{returnAirplane()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_my_vector}{My\+Vector}}$<$ \mbox{\hyperlink{class_airplane}{Airplane}} $\ast$ $>$ Table\+::return\+Airplane (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_table_vessel}{Table\+Vessel}} $\ast$}]{vessels,  }\item[{bool}]{active }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+return airplane 
+\begin{DoxyParams}{Parameters}
+{\em vessels} & that this \\
+\hline
+{\em active} & that this do \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+that return 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Table.\+h\end{DoxyCompactItemize}

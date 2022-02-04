@@ -1,0 +1,76 @@
+\hypertarget{class_airplane}{}\doxysection{Airplane Class Reference}
+\label{class_airplane}\index{Airplane@{Airplane}}
+Inheritance diagram for Airplane\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_airplane}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_airplane_aa948dbd94076a006d27787f57f4fb1e0}\label{class_airplane_aa948dbd94076a006d27787f57f4fb1e0}} 
+{\bfseries Airplane} (int hp, std\+::pair$<$ int, int $>$current\+Xy, int price, char type, int longes, int attack\+Hp, int speed, bool who, bool active, \mbox{\hyperlink{class_armament}{Armament}} $\ast$mass, \mbox{\hyperlink{class_vessel}{Vessel}} $\ast$parent)
+\item 
+\mbox{\Hypertarget{class_airplane_a300652be3b6d672ad3cb06b5a5ff3ad6}\label{class_airplane_a300652be3b6d672ad3cb06b5a5ff3ad6}} 
+bool {\bfseries get\+Active} () const
+\item 
+\mbox{\Hypertarget{class_airplane_ac0372faa3569cfbf2775329bf9c13c63}\label{class_airplane_ac0372faa3569cfbf2775329bf9c13c63}} 
+virtual void {\bfseries attack} (\mbox{\hyperlink{class_object}{Object}} $\ast$X)=0
+\item 
+\mbox{\Hypertarget{class_airplane_aa3155195b708b4bfd13b4adbec2bded6}\label{class_airplane_aa3155195b708b4bfd13b4adbec2bded6}} 
+\mbox{\hyperlink{class_armament}{Armament}} $\ast$ {\bfseries get\+Mass} ()
+\item 
+\mbox{\Hypertarget{class_airplane_a6315674c4686b0a055852d17159f4943}\label{class_airplane_a6315674c4686b0a055852d17159f4943}} 
+void {\bfseries set\+Active} (bool active)
+\item 
+\mbox{\Hypertarget{class_airplane_a1a9fde96640ea2ac47aaaa57fbc9ba6d}\label{class_airplane_a1a9fde96640ea2ac47aaaa57fbc9ba6d}} 
+\mbox{\hyperlink{class_vessel}{Vessel}} $\ast$ {\bfseries get\+Parent} ()
+\item 
+\mbox{\Hypertarget{class_airplane_a13757a80b24ba1e0d07512a33f3404f3}\label{class_airplane_a13757a80b24ba1e0d07512a33f3404f3}} 
+void {\bfseries set\+Parent} (\mbox{\hyperlink{class_vessel}{Vessel}} $\ast$ves)
+\item 
+\mbox{\Hypertarget{class_airplane_a4819cf2d70a94d26bb2f62b500524b33}\label{class_airplane_a4819cf2d70a94d26bb2f62b500524b33}} 
+int {\bfseries get\+Price} ()
+\item 
+\mbox{\Hypertarget{class_airplane_a1d013255a2ba02dbeeff83e34d0b6e03}\label{class_airplane_a1d013255a2ba02dbeeff83e34d0b6e03}} 
+bool {\bfseries get\+Active} ()
+\item 
+\mbox{\Hypertarget{class_airplane_adbb2e1deafabec9bc6e751c2b03d7a48}\label{class_airplane_adbb2e1deafabec9bc6e751c2b03d7a48}} 
+int {\bfseries get\+Attack\+Hp} ()
+\item 
+void \mbox{\hyperlink{class_airplane_a83c9fc7bd91efd5d455d9fa342e55d97}{move}} (char type, int x) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_airplane_a943ffada07dfe719fbe959f682c05c0a}\label{class_airplane_a943ffada07dfe719fbe959f682c05c0a}} 
+bool {\bfseries active}
+\item 
+\mbox{\Hypertarget{class_airplane_a478326651b067d8d7367f869bcbbcd37}\label{class_airplane_a478326651b067d8d7367f869bcbbcd37}} 
+\mbox{\hyperlink{class_armament}{Armament}} $\ast$ {\bfseries mass}
+\item 
+\mbox{\Hypertarget{class_airplane_a49911f9ed389f5cb4e08e1d1488428c0}\label{class_airplane_a49911f9ed389f5cb4e08e1d1488428c0}} 
+\mbox{\hyperlink{class_vessel}{Vessel}} $\ast$ {\bfseries parent}
+\item 
+\mbox{\Hypertarget{class_airplane_ac173cf0c9fab81c4ac44b66027276fd6}\label{class_airplane_ac173cf0c9fab81c4ac44b66027276fd6}} 
+int {\bfseries attack\+Hp}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_airplane_a83c9fc7bd91efd5d455d9fa342e55d97}\label{class_airplane_a83c9fc7bd91efd5d455d9fa342e55d97}} 
+\index{Airplane@{Airplane}!move@{move}}
+\index{move@{move}!Airplane@{Airplane}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Airplane\+::move (\begin{DoxyParamCaption}\item[{char}]{type,  }\item[{int}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_object}{Object}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Airplane.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,88 @@
+\hypertarget{_warehouse_8h_source}{}\doxysection{Warehouse.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Armament.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{class_warehouse}{Warehouse}} \{}
+\DoxyCodeLine{6 \textcolor{keyword}{private}:}
+\DoxyCodeLine{7     \textcolor{keywordtype}{int} heavyArmament = 1000;}
+\DoxyCodeLine{8     \textcolor{keywordtype}{int} lungArmament = 1000;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{public}:}
+\DoxyCodeLine{11     \textcolor{keywordtype}{void} rechargeHeavy(\textcolor{keywordtype}{int} maxPatron) \{}
+\DoxyCodeLine{12         heavyArmament -\/= maxPatron;}
+\DoxyCodeLine{13     \}}
+\DoxyCodeLine{14       }
+\DoxyCodeLine{15     \textcolor{keywordtype}{void} rechargeLung(\textcolor{keywordtype}{int} maxPatron) \{}
+\DoxyCodeLine{16         lungArmament -\/= maxPatron;}
+\DoxyCodeLine{17     \}}
+\DoxyCodeLine{18   }
+\DoxyCodeLine{19     \textcolor{keywordtype}{int} getSomePatronHeavy(\textcolor{keywordtype}{int} sizeMagazine) \{}
+\DoxyCodeLine{20         \textcolor{keywordflow}{if} (heavyArmament > 0) \{}
+\DoxyCodeLine{21             \textcolor{keywordflow}{if} (heavyArmament / sizeMagazine > 0) \{}
+\DoxyCodeLine{22                 heavyArmament -\/= sizeMagazine;}
+\DoxyCodeLine{23                 \textcolor{keywordflow}{return} sizeMagazine;}
+\DoxyCodeLine{24             \}}
+\DoxyCodeLine{25             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{26                 \textcolor{keywordtype}{int} res = heavyArmament \% sizeMagazine;}
+\DoxyCodeLine{27                 heavyArmament = 0;}
+\DoxyCodeLine{28                 \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{29             \}}
+\DoxyCodeLine{30         \}}
+\DoxyCodeLine{31         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{32     \}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} AddPatronToWarehouse(\textcolor{keywordtype}{int} patron,std::string type) \{}
+\DoxyCodeLine{35         \textcolor{keywordflow}{if} (type==\textcolor{stringliteral}{"{}lung"{}}) \{}
+\DoxyCodeLine{36             lungArmament += patron;}
+\DoxyCodeLine{37         \}}
+\DoxyCodeLine{38         \textcolor{keywordflow}{if} (type == \textcolor{stringliteral}{"{}heavy"{}}) \{}
+\DoxyCodeLine{39             heavyArmament += patron;}
+\DoxyCodeLine{40         \}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keywordtype}{int} getSomePatronLung(\textcolor{keywordtype}{int} sizeMagazine) \{}
+\DoxyCodeLine{45         \textcolor{keywordflow}{if} (lungArmament > 0) \{}
+\DoxyCodeLine{46             \textcolor{keywordflow}{if} (lungArmament / sizeMagazine > 0) \{}
+\DoxyCodeLine{47                 lungArmament -\/= sizeMagazine;}
+\DoxyCodeLine{48                 \textcolor{keywordflow}{return} sizeMagazine;}
+\DoxyCodeLine{49             \}}
+\DoxyCodeLine{50             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{51                 \textcolor{keywordtype}{int} res = lungArmament \% sizeMagazine;}
+\DoxyCodeLine{52                 lungArmament = 0;}
+\DoxyCodeLine{53                 \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{54             \}}
+\DoxyCodeLine{55         \}}
+\DoxyCodeLine{56         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{57     \}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \textcolor{keywordtype}{void} setHeavyArmament(\textcolor{keywordtype}{int} heavyArmament) \{}
+\DoxyCodeLine{61         this-\/>heavyArmament = heavyArmament;}
+\DoxyCodeLine{62     \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{keywordtype}{void} setLungArmament(\textcolor{keywordtype}{int} lungArmament) \{}
+\DoxyCodeLine{65         this-\/>lungArmament = lungArmament;}
+\DoxyCodeLine{66     \}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     \textcolor{keywordtype}{void} byArmament(std::string type) \{}
+\DoxyCodeLine{69         \textcolor{keywordflow}{if}(type==\textcolor{stringliteral}{"{}Heavy"{}})}
+\DoxyCodeLine{70         heavyArmament += 1000;}
+\DoxyCodeLine{71         \textcolor{keywordflow}{if} (type == \textcolor{stringliteral}{"{}Lung"{}})}
+\DoxyCodeLine{72         lungArmament += 1000;}
+\DoxyCodeLine{73     \}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     \textcolor{keywordtype}{int} getHeavyCapacity() \{}
+\DoxyCodeLine{76         \textcolor{keywordflow}{return} heavyArmament;}
+\DoxyCodeLine{77     \}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79     \textcolor{keywordtype}{int} getLungCapacity() \{}
+\DoxyCodeLine{80         \textcolor{keywordflow}{return} lungArmament;}
+\DoxyCodeLine{81     \}}
+\DoxyCodeLine{82 \};}
+\DoxyCodeLine{83 }
+
+\end{DoxyCode}

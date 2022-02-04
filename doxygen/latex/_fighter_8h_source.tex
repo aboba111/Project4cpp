@@ -1,0 +1,32 @@
+\hypertarget{_fighter_8h_source}{}\doxysection{Fighter.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Airplane.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Parametres.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_fighter}{Fighter}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_airplane}{Airplane}} \{}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{public}:}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10     \mbox{\hyperlink{class_fighter}{Fighter}}( std::pair<int, int >currentXy ,\textcolor{keywordtype}{char} type, \textcolor{keywordtype}{bool} who,\mbox{\hyperlink{class_vessel}{Vessel}}* parent) : \mbox{\hyperlink{class_airplane}{Airplane}}(hpFighter,currentXy,priceFighter,type,longesFighter,attackHpFighter,speedFighter,who,active,\textcolor{keyword}{new} \mbox{\hyperlink{class_armament}{Armament}}(maxAmmunitionFighter, currentAmmunitionFighter,pattronPrice, pattronHeavyDamageFighter, volumForAttackFighter),parent) \{}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keywordtype}{void} attack(\mbox{\hyperlink{class_object}{Object}} *M)\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{15         \textcolor{keywordflow}{if} (M-\/>getType() == \textcolor{charliteral}{'c'} || M-\/>getType() == \textcolor{charliteral}{'C'} || M-\/>getType() == \textcolor{charliteral}{'s'} || M-\/>getType() == \textcolor{charliteral}{'S'}) \{}
+\DoxyCodeLine{16             \textcolor{keywordflow}{if} (mass-\/>getCurrentAmmunition() < mass-\/>getVolumForAttack())}
+\DoxyCodeLine{17                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{18             mass-\/>attack();}
+\DoxyCodeLine{19             M-\/>getDamage(mass-\/>attack());}
+\DoxyCodeLine{20         \} }
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23       \mbox{\hyperlink{class_fighter}{\string~Fighter}}() \{}
+\DoxyCodeLine{24             \textcolor{keyword}{delete} mass;}
+\DoxyCodeLine{25     \} }
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 }
+
+\end{DoxyCode}

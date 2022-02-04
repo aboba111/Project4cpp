@@ -1,0 +1,413 @@
+\hypertarget{_table_8h_source}{}\doxysection{Table.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include<iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Vessel.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Aircraft\_carrier.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Armed\_cruiser.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}Air\_cruiser.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}Fighter.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Stormtrooper.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}Airplane.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include"{}MyVector.h"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{const} \textcolor{keywordtype}{int} weight = 32;}
+\DoxyCodeLine{18 \textcolor{keyword}{const} \textcolor{keywordtype}{int} height = 16;}
+\DoxyCodeLine{19 \textcolor{keyword}{const} \textcolor{keywordtype}{int} myMoney = 2000;}
+\DoxyCodeLine{20 \textcolor{keyword}{const} \textcolor{keywordtype}{int} opponentMoney = 1500;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_table_vessel}{TableVessel}} \{}
+\DoxyCodeLine{23     \mbox{\hyperlink{class_my_vector}{MyVector<Aircraft\_carrier *>}} Aircraft;}
+\DoxyCodeLine{24     \mbox{\hyperlink{class_my_vector}{MyVector<Armed\_cruiser *>}} Cruiser;}
+\DoxyCodeLine{25     \mbox{\hyperlink{class_my_vector}{MyVector<Air\_cruiser *>}} AirCruiser;}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_coordinate}{Coordinate}} \{}
+\DoxyCodeLine{29     \textcolor{keywordtype}{char} type;}
+\DoxyCodeLine{30     \mbox{\hyperlink{class_object}{Object}} *allVessel;}
+\DoxyCodeLine{31 \};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keyword}{class }\mbox{\hyperlink{class_table}{Table}} \{}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_table_vessel}{TableVessel}} myVessel;}
+\DoxyCodeLine{38     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_table_vessel}{TableVessel}} myOpponentVessel;}
+\DoxyCodeLine{39 \textcolor{comment}{/*    struct Coordinate xyOpponentVessel;}}
+\DoxyCodeLine{40 \textcolor{comment}{    struct Coordinate xyMyVessel;*/}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     std::vector<Coordinate> tableMap;}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{keyword}{public}:}
+\DoxyCodeLine{45     \mbox{\hyperlink{class_table}{Table}}() \{}
+\DoxyCodeLine{46         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 2 * weight; i++) \{}
+\DoxyCodeLine{47             \textcolor{keyword}{struct }\mbox{\hyperlink{struct_coordinate}{Coordinate}} X\{\textcolor{charliteral}{'<'}, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{48             tableMap.push\_back(X);}
+\DoxyCodeLine{49         \}}
+\DoxyCodeLine{50         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < weight * (height -\/ 4); i++) \{}
+\DoxyCodeLine{51             \textcolor{keyword}{struct }\mbox{\hyperlink{struct_coordinate}{Coordinate}} X\{\textcolor{charliteral}{'.'}, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{52             tableMap.push\_back(X);}
+\DoxyCodeLine{53         \}}
+\DoxyCodeLine{54         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 2 * weight; i++) \{}
+\DoxyCodeLine{55             \textcolor{keyword}{struct }\mbox{\hyperlink{struct_coordinate}{Coordinate}} X\{\textcolor{charliteral}{'>'}, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{56             tableMap.push\_back(X);}
+\DoxyCodeLine{57         \}}
+\DoxyCodeLine{58     \}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \textcolor{keyword}{friend} std::ostream \&operator<<(std::ostream \&out, \textcolor{keyword}{const} \mbox{\hyperlink{class_table}{Table}} \&map) \{}
+\DoxyCodeLine{61         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < weight * height; i++) \{}
+\DoxyCodeLine{62             out << map.tableMap[i].type;}
+\DoxyCodeLine{63             \textcolor{keywordflow}{if} ((i + 1) \% weight == 0) \{}
+\DoxyCodeLine{64                 out << std::endl;}
+\DoxyCodeLine{65             \}}
+\DoxyCodeLine{66         \}}
+\DoxyCodeLine{67         \textcolor{keywordflow}{return} out;}
+\DoxyCodeLine{68     \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} addVessels(\textcolor{keywordtype}{char} type, \textcolor{keywordtype}{int} position, \textcolor{keyword}{const} std::string \&name) \{}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72         \textcolor{keywordflow}{switch} (type) \{}
+\DoxyCodeLine{73             \textcolor{keywordflow}{case} \textcolor{charliteral}{'A'}: \{}
+\DoxyCodeLine{74                 \textcolor{keywordflow}{if} (getInfo(position, height -\/ 2) == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{75                     std::pair<int, int> xy\{ position, height -\/ 2 \};}
+\DoxyCodeLine{76                     \mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}} *M = \textcolor{keyword}{new} \mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}}(xy,type,\textcolor{keyword}{true},\textcolor{stringliteral}{"{}myVessel"{}});}
+\DoxyCodeLine{77                     tableMap[coordinateToIndex(position, height -\/ 2)].allVessel = M;}
+\DoxyCodeLine{78                     tableMap[coordinateToIndex(position, height -\/ 2)].type =type;}
+\DoxyCodeLine{79                     myVessel.Aircraft.push\_back(M);}
+\DoxyCodeLine{80                 \}}
+\DoxyCodeLine{81                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{82             \}}
+\DoxyCodeLine{83             \textcolor{keywordflow}{case} \textcolor{charliteral}{'B'}: \{}
+\DoxyCodeLine{84                 \textcolor{keywordflow}{if} (getInfo(position, height -\/ 2) == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{85                     std::pair<int, int> xy\{ position, height -\/ 2 \};}
+\DoxyCodeLine{86                     \mbox{\hyperlink{class_armed__cruiser}{Armed\_cruiser}} *M = \textcolor{keyword}{new} \mbox{\hyperlink{class_armed__cruiser}{Armed\_cruiser}}(xy, type, \textcolor{keyword}{true}, \textcolor{stringliteral}{"{}myVessel"{}});}
+\DoxyCodeLine{87                     tableMap[coordinateToIndex(position, height -\/ 2)].allVessel = M;}
+\DoxyCodeLine{88                     tableMap[coordinateToIndex(position, height -\/ 2)].type = type;}
+\DoxyCodeLine{89                     myVessel.Cruiser.push\_back(M);}
+\DoxyCodeLine{90                 \}}
+\DoxyCodeLine{91                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{92             \}}
+\DoxyCodeLine{93             \textcolor{keywordflow}{case} \textcolor{charliteral}{'D'}: \{}
+\DoxyCodeLine{94                 \textcolor{keywordflow}{if} (getInfo(position, height -\/ 2) == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{95                     std::pair<int, int> xy\{ position, height -\/ 2 \};}
+\DoxyCodeLine{96                     \mbox{\hyperlink{class_air__cruiser}{Air\_cruiser}} *M = \textcolor{keyword}{new} \mbox{\hyperlink{class_air__cruiser}{Air\_cruiser}}(xy, type, \textcolor{keyword}{true}, \textcolor{stringliteral}{"{}myVessel"{}});}
+\DoxyCodeLine{97                     myVessel.AirCruiser.push\_back(M);}
+\DoxyCodeLine{98                     tableMap[coordinateToIndex(position, height -\/ 2)].type = type;}
+\DoxyCodeLine{99                     tableMap[coordinateToIndex(position, height -\/ 2)].allVessel = M;}
+\DoxyCodeLine{100                 \}}
+\DoxyCodeLine{101                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103             \}}
+\DoxyCodeLine{104             \textcolor{keywordflow}{case} \textcolor{charliteral}{'a'}: \{}
+\DoxyCodeLine{105                 \textcolor{keywordflow}{if} (getInfo(position, 1) == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{106                     std::pair<int, int> xy\{ position, 1 \};}
+\DoxyCodeLine{107                     \mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}} *M = \textcolor{keyword}{new} \mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}}(xy, type, \textcolor{keyword}{false}, \textcolor{stringliteral}{"{}myOponentVessel"{}});}
+\DoxyCodeLine{108                     tableMap[coordinateToIndex(position, height -\/ 2)].type = type;}
+\DoxyCodeLine{109                     myOpponentVessel.Aircraft.push\_back(M);}
+\DoxyCodeLine{110                     tableMap[coordinateToIndex(position, 1)].allVessel = M;}
+\DoxyCodeLine{111                 \}}
+\DoxyCodeLine{112                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{113             \}}
+\DoxyCodeLine{114             \textcolor{keywordflow}{case} \textcolor{charliteral}{'b'}: \{}
+\DoxyCodeLine{115                 \textcolor{keywordflow}{if} (getInfo(position, 1) == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{116                     std::pair<int, int> xy\{ position, 1 \};}
+\DoxyCodeLine{117                     \mbox{\hyperlink{class_armed__cruiser}{Armed\_cruiser}} *M = \textcolor{keyword}{new} \mbox{\hyperlink{class_armed__cruiser}{Armed\_cruiser}}(xy, type, \textcolor{keyword}{false}, \textcolor{stringliteral}{"{}myOponentVessel"{}});}
+\DoxyCodeLine{118                     tableMap[coordinateToIndex(position, height -\/ 2)].type = type;}
+\DoxyCodeLine{119                     myOpponentVessel.Cruiser.push\_back(M);}
+\DoxyCodeLine{120                     tableMap[coordinateToIndex(position, 1)].allVessel = M;}
+\DoxyCodeLine{121                 \}}
+\DoxyCodeLine{122                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{123             \}}
+\DoxyCodeLine{124             \textcolor{keywordflow}{case} \textcolor{charliteral}{'d'}: \{}
+\DoxyCodeLine{125                 \textcolor{keywordflow}{if} (getInfo(position, 1) == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{126                     std::pair<int, int> xy\{ position, 1 \};}
+\DoxyCodeLine{127                     \mbox{\hyperlink{class_air__cruiser}{Air\_cruiser}} *M = \textcolor{keyword}{new} \mbox{\hyperlink{class_air__cruiser}{Air\_cruiser}}(xy, type, \textcolor{keyword}{false}, \textcolor{stringliteral}{"{}myOponentVessel"{}});}
+\DoxyCodeLine{128                     tableMap[coordinateToIndex(position, height -\/ 2)].type = type;}
+\DoxyCodeLine{129                     tableMap[coordinateToIndex(position, 1)].allVessel = M;}
+\DoxyCodeLine{130                     myOpponentVessel.AirCruiser.push\_back(M);}
+\DoxyCodeLine{131                 \}}
+\DoxyCodeLine{132                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{133             \}}
+\DoxyCodeLine{134         \}}
+\DoxyCodeLine{135     \}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     \textcolor{keywordtype}{void} clean() \{}
+\DoxyCodeLine{138         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < height * weight; i++) \{}
+\DoxyCodeLine{139             \textcolor{keywordflow}{if} (i < 2 * weight) \{}
+\DoxyCodeLine{140                 tableMap[i].type = \textcolor{charliteral}{'<'};}
+\DoxyCodeLine{141             \}}
+\DoxyCodeLine{142             \textcolor{keywordflow}{if} (i >= 2 * weight \&\& i < (height -\/ 2) * weight) \{}
+\DoxyCodeLine{143                 tableMap[i].type = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{144             \}}
+\DoxyCodeLine{145             \textcolor{keywordflow}{if} (i >= (height -\/ 2) * weight) \{}
+\DoxyCodeLine{146                 tableMap[i].type = \textcolor{charliteral}{'>'};}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148             \}}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150         \}}
+\DoxyCodeLine{151     \}}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153     \textcolor{keyword}{static} \textcolor{keywordtype}{int} coordinateToIndex(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y) \{}
+\DoxyCodeLine{154         \textcolor{keywordflow}{return} x + y * weight;}
+\DoxyCodeLine{155     \}}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157     \textcolor{keywordtype}{void} show(\textcolor{keywordtype}{char} type, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y) \{}
+\DoxyCodeLine{158         tableMap[coordinateToIndex(x, y)].type = type;}
+\DoxyCodeLine{159     \}}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161     \textcolor{keywordtype}{void} refreshAllObjects() \{}
+\DoxyCodeLine{162         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < myOpponentVessel.Aircraft.size(); i++) \{}
+\DoxyCodeLine{163             \mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}} *M = myOpponentVessel.Aircraft[i];}
+\DoxyCodeLine{164             std::pair<int, int> xy = myOpponentVessel.Aircraft[i]-\/>getCurrentXy();}
+\DoxyCodeLine{165             show(M-\/>getType(), xy.first, xy.second);}
+\DoxyCodeLine{166             \textcolor{keywordflow}{if} (M-\/>getAirplane() != \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{167                 \textcolor{keywordflow}{if} (M-\/>getAirplane()-\/>getActive()) \{}
+\DoxyCodeLine{168                     std::pair<int, int> xyAirplane = M-\/>getAirplane()-\/>getCurrentXy();}
+\DoxyCodeLine{169                     show(M-\/>getAirplane()-\/>getType(), xyAirplane.first, xyAirplane.second);}
+\DoxyCodeLine{170                 \}}
+\DoxyCodeLine{171         \}}
+\DoxyCodeLine{172         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < myVessel.Aircraft.size(); i++) \{}
+\DoxyCodeLine{173             \mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}} *M = myVessel.Aircraft[i];}
+\DoxyCodeLine{174             std::pair<int, int> xy = myVessel.Aircraft[i]-\/>getCurrentXy();}
+\DoxyCodeLine{175             show(M-\/>getType(), xy.first, xy.second);}
+\DoxyCodeLine{176             \textcolor{keywordflow}{if} (M-\/>getAirplane() != \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{177                 \textcolor{keywordflow}{if} (M-\/>getAirplane()-\/>getActive()) \{}
+\DoxyCodeLine{178                     std::pair<int, int> xyAirplane = M-\/>getAirplane()-\/>getCurrentXy();}
+\DoxyCodeLine{179                     show(M-\/>getAirplane()-\/>getType(), xyAirplane.first, xyAirplane.second);}
+\DoxyCodeLine{180                 \}}
+\DoxyCodeLine{181         \}}
+\DoxyCodeLine{182         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < myOpponentVessel.AirCruiser.size(); i++) \{}
+\DoxyCodeLine{183             \mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}} *M = myOpponentVessel.AirCruiser[i];}
+\DoxyCodeLine{184             std::pair<int, int> xy = myOpponentVessel.AirCruiser[i]-\/>getCurrentXy();}
+\DoxyCodeLine{185             show(M-\/>getType(), xy.first, xy.second);}
+\DoxyCodeLine{186             \textcolor{keywordflow}{if} (M-\/>getAirplane() != \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{187                 \textcolor{keywordflow}{if} (M-\/>getAirplane()-\/>getActive()) \{}
+\DoxyCodeLine{188                     std::pair<int, int> xyAirplane = M-\/>getAirplane()-\/>getCurrentXy();}
+\DoxyCodeLine{189                     show(M-\/>getAirplane()-\/>getType(), xyAirplane.first, xyAirplane.second);}
+\DoxyCodeLine{190                 \}}
+\DoxyCodeLine{191             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < myVessel.AirCruiser.size(); i++) \{}
+\DoxyCodeLine{192                 \mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}} *M = myVessel.AirCruiser[i];}
+\DoxyCodeLine{193                 std::pair<int, int> xy = myVessel.AirCruiser[i]-\/>getCurrentXy();}
+\DoxyCodeLine{194                 show(M-\/>getType(), xy.first, xy.second);}
+\DoxyCodeLine{195                 \textcolor{keywordflow}{if} (M-\/>getAirplane() != \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{196                     \textcolor{keywordflow}{if} (M-\/>getAirplane()-\/>getActive()) \{}
+\DoxyCodeLine{197                         std::pair<int, int> xyAirplane = M-\/>getAirplane()-\/>getCurrentXy();}
+\DoxyCodeLine{198                         show(M-\/>getAirplane()-\/>getType(), xyAirplane.first, xyAirplane.second);}
+\DoxyCodeLine{199                     \}}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < myOpponentVessel.Cruiser.size(); i++) \{}
+\DoxyCodeLine{202                     std::pair<int, int> xy = myOpponentVessel.Cruiser[i]-\/>getCurrentXy();}
+\DoxyCodeLine{203                     show(myOpponentVessel.Cruiser[i]-\/>getType(), xy.first, xy.second);}
+\DoxyCodeLine{204                 \}}
+\DoxyCodeLine{205                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < myVessel.Cruiser.size(); i++) \{}
+\DoxyCodeLine{206                     std::pair<int, int> xy = myVessel.Cruiser[i]-\/>getCurrentXy();}
+\DoxyCodeLine{207                     show(myVessel.Cruiser[i]-\/>getType(), xy.first, xy.second);}
+\DoxyCodeLine{208                 \}}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210             \}}
+\DoxyCodeLine{211         \}}
+\DoxyCodeLine{212     \}}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214     \textcolor{keywordtype}{int} startAirplane(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{char} type) \{}
+\DoxyCodeLine{215         \textcolor{keywordflow}{if} (getInfo(x, y) != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{216             \mbox{\hyperlink{class_object}{Object}} *B = getInfo(x, y);}
+\DoxyCodeLine{217             \mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}} *A = \textcolor{keyword}{dynamic\_cast <}\mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}} *\textcolor{keyword}{>}(B);}
+\DoxyCodeLine{218             \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'C'} || type == \textcolor{charliteral}{'S'}) \{}
+\DoxyCodeLine{219                 \textcolor{keywordflow}{if} (getInfo(x , y-\/2) == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{220                     A-\/>startAirplane();}
+\DoxyCodeLine{221                     \mbox{\hyperlink{class_airplane}{Airplane}} *airplane = A-\/>getAirplane();}
+\DoxyCodeLine{222                     airplane-\/>setCurrentXy(A-\/>getCurrentXy().first, A-\/>getCurrentXy().second-\/2);}
+\DoxyCodeLine{223                     tableMap[coordinateToIndex(x, y-\/ 2)].type = type;}
+\DoxyCodeLine{224                     tableMap[coordinateToIndex(x, y-\/ 2)].allVessel = airplane;}
+\DoxyCodeLine{225                     }
+\DoxyCodeLine{226                 \}}
+\DoxyCodeLine{227                 \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{228             \}}
+\DoxyCodeLine{229             \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'c'} || type == \textcolor{charliteral}{'s'}) \{}
+\DoxyCodeLine{230                 \textcolor{keywordflow}{if} (getInfo(x , y+2) == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{231                     A-\/>startAirplane();}
+\DoxyCodeLine{232                     \mbox{\hyperlink{class_airplane}{Airplane}} *airplane = A-\/>getAirplane();}
+\DoxyCodeLine{233                     airplane-\/>setCurrentXy(A-\/>getCurrentXy().first, A-\/>getCurrentXy().second+2);}
+\DoxyCodeLine{234                     tableMap[coordinateToIndex(x,y + 2)].type = type;}
+\DoxyCodeLine{235                     tableMap[coordinateToIndex(x, y + 2)].allVessel =airplane;}
+\DoxyCodeLine{236                 \}}
+\DoxyCodeLine{237                 \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{238             \}}
+\DoxyCodeLine{239         \}}
+\DoxyCodeLine{240         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{241     \}}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243     \mbox{\hyperlink{class_object}{Object}} *getInfo(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y) \{}
+\DoxyCodeLine{244         \textcolor{keywordflow}{return} tableMap[coordinateToIndex(x, y)].allVessel;}
+\DoxyCodeLine{245     \};}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247     \textcolor{keywordtype}{void} deleteVesselMap(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y) \{}
+\DoxyCodeLine{248         \textcolor{keywordflow}{if}(x<2)}
+\DoxyCodeLine{249         tableMap[coordinateToIndex(x, y)].type = \textcolor{charliteral}{'<'};}
+\DoxyCodeLine{250         \textcolor{keywordflow}{if} (x > 14)}
+\DoxyCodeLine{251             tableMap[coordinateToIndex(x, y)].type = \textcolor{charliteral}{'>'};}
+\DoxyCodeLine{252         \textcolor{keywordflow}{if}(x>=2||x<=14)}
+\DoxyCodeLine{253             tableMap[coordinateToIndex(x, y)].type = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{254         tableMap[coordinateToIndex(x, y)].allVessel = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{255     \}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257     \textcolor{keywordtype}{void} addVesselMap(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \mbox{\hyperlink{class_object}{Object}} *vessel) \{}
+\DoxyCodeLine{258         tableMap[coordinateToIndex(x, y)].allVessel = vessel;}
+\DoxyCodeLine{259         \textcolor{keywordflow}{if} (vessel == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{260             std::cout << \textcolor{stringliteral}{"{}addVesselMap"{}};}
+\DoxyCodeLine{261         tableMap[coordinateToIndex(x, y)].type = vessel-\/>getType();}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{263     \}}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{265     std::vector<Coordinate> getMap() \{}
+\DoxyCodeLine{266         \textcolor{keywordflow}{return} tableMap;}
+\DoxyCodeLine{267     \}}
+\DoxyCodeLine{268 }
+\DoxyCodeLine{269     \textcolor{keywordtype}{void} showMyObject(\textcolor{keywordtype}{char} type) \{}
+\DoxyCodeLine{270         \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'A'}) \{}
+\DoxyCodeLine{271             std::cout << \textcolor{stringliteral}{"{}Aircraft:"{}} << std::endl;}
+\DoxyCodeLine{272             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < myVessel.Aircraft.size(); i++) \{}
+\DoxyCodeLine{273                 std::cout << i << \textcolor{stringliteral}{"{} -\/ Hp:"{}} << myVessel.Aircraft[i]-\/>getHp() << \textcolor{stringliteral}{"{}    |   ("{}}}
+\DoxyCodeLine{274                           << myVessel.Aircraft[i]-\/>getCurrentXy().first << \textcolor{stringliteral}{"{}; "{}}}
+\DoxyCodeLine{275                           << myVessel.Aircraft[i]-\/>getCurrentXy().second << \textcolor{stringliteral}{"{})"{}} << std::endl;}
+\DoxyCodeLine{276             \}}
+\DoxyCodeLine{277         \}}
+\DoxyCodeLine{278         \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'B'}) \{}
+\DoxyCodeLine{279             std::cout << \textcolor{stringliteral}{"{}Cruiser:"{}} << std::endl;}
+\DoxyCodeLine{280             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < myVessel.Cruiser.size(); i++) \{}
+\DoxyCodeLine{281                 std::cout << i << \textcolor{stringliteral}{"{} -\/ Hp:"{}} << myVessel.Cruiser[i]-\/>getHp() << \textcolor{stringliteral}{"{} |   ("{}}}
+\DoxyCodeLine{282                           << myVessel.Cruiser[i]-\/>getCurrentXy().first << \textcolor{stringliteral}{"{}; "{}}}
+\DoxyCodeLine{283                           << myVessel.Cruiser[i]-\/>getCurrentXy().second << \textcolor{stringliteral}{"{})"{}} << std::endl;}
+\DoxyCodeLine{284             \}}
+\DoxyCodeLine{285         \}}
+\DoxyCodeLine{286         \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'D'}) \{}
+\DoxyCodeLine{287             std::cout << \textcolor{stringliteral}{"{}AirCruiser:"{}} << std::endl;}
+\DoxyCodeLine{288             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < myVessel.AirCruiser.size(); i++) \{}
+\DoxyCodeLine{289                 std::cout << i << \textcolor{stringliteral}{"{} -\/ Hp:"{}} << myVessel.AirCruiser[i]-\/>getHp() << \textcolor{stringliteral}{"{}  |   ("{}}}
+\DoxyCodeLine{290                           << myVessel.AirCruiser[i]-\/>getCurrentXy().first << \textcolor{stringliteral}{"{}; "{}}}
+\DoxyCodeLine{291                           << myVessel.AirCruiser[i]-\/>getCurrentXy().second << \textcolor{stringliteral}{"{})"{}} << std::endl;}
+\DoxyCodeLine{292             \}}
+\DoxyCodeLine{293         \}}
+\DoxyCodeLine{294         \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'D'}) \{}
+\DoxyCodeLine{295             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < myVessel.AirCruiser.size(); i++) \{}
+\DoxyCodeLine{296                 \textcolor{keywordflow}{if} (myVessel.AirCruiser[i]-\/>getAirplane() != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{297                     \textcolor{keywordflow}{if} (myVessel.AirCruiser[i]-\/>getAirplane()-\/>getActive() == \textcolor{keyword}{true} \&\& myVessel.AirCruiser[i]-\/>getAirplane()-\/>getType() == \textcolor{charliteral}{'S'}) \{}
+\DoxyCodeLine{298                         std::cout << \textcolor{stringliteral}{"{}Fighter:"{}} << std::endl;}
+\DoxyCodeLine{299                         std::cout << i << \textcolor{stringliteral}{"{} -\/ Hp:"{}} << myVessel.AirCruiser[i]-\/>getHp() << \textcolor{stringliteral}{"{}  |   ("{}}}
+\DoxyCodeLine{300                             << myVessel.AirCruiser[i]-\/>getAirplane()-\/>getCurrentXy().first << \textcolor{stringliteral}{"{}; "{}}}
+\DoxyCodeLine{301                             << myVessel.AirCruiser[i]-\/>getAirplane()-\/>getCurrentXy().second << \textcolor{stringliteral}{"{})"{}} << std::endl;}
+\DoxyCodeLine{302                     \}}
+\DoxyCodeLine{303                     \textcolor{keywordflow}{if} (myVessel.AirCruiser[i]-\/>getAirplane()-\/>getActive() == \textcolor{keyword}{true} \&\& myVessel.AirCruiser[i]-\/>getAirplane()-\/>getType() == \textcolor{charliteral}{'C'}) \{}
+\DoxyCodeLine{304                         std::cout << \textcolor{stringliteral}{"{}Stormtrooper:"{}} << std::endl;}
+\DoxyCodeLine{305                         std::cout << i << \textcolor{stringliteral}{"{} -\/ Hp:"{}} << myVessel.AirCruiser[i]-\/>getHp() << \textcolor{stringliteral}{"{}  |   ("{}}}
+\DoxyCodeLine{306                             << myVessel.AirCruiser[i]-\/>getAirplane()-\/>getCurrentXy().first << \textcolor{stringliteral}{"{}; "{}}}
+\DoxyCodeLine{307                             << myVessel.AirCruiser[i]-\/>getAirplane()-\/>getCurrentXy().second << \textcolor{stringliteral}{"{})"{}} << std::endl;}
+\DoxyCodeLine{308                     \}}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{310 }
+\DoxyCodeLine{311                 \}}
+\DoxyCodeLine{312             \}}
+\DoxyCodeLine{313         \}}
+\DoxyCodeLine{314         \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'A'}) \{}
+\DoxyCodeLine{315             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < myVessel.Aircraft.size(); i++) \{}
+\DoxyCodeLine{316                 \textcolor{keywordflow}{if} (myVessel.Aircraft[i]-\/>getAirplane() != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{317                     \textcolor{keywordflow}{if} (myVessel.Aircraft[i]-\/>getAirplane()-\/>getActive() == \textcolor{keyword}{true} \&\& myVessel.Aircraft[i]-\/>getAirplane()-\/>getType() == \textcolor{charliteral}{'C'}) \{}
+\DoxyCodeLine{318                         std::cout << \textcolor{stringliteral}{"{}Fighter:"{}} << std::endl;}
+\DoxyCodeLine{319                         std::cout << i << \textcolor{stringliteral}{"{} -\/ Hp:"{}} << myVessel.Aircraft[i]-\/>getHp() << \textcolor{stringliteral}{"{}    |   ("{}}}
+\DoxyCodeLine{320                             << myVessel.Aircraft[i]-\/>getCurrentXy().first << \textcolor{stringliteral}{"{}; "{}}}
+\DoxyCodeLine{321                             << myVessel.Aircraft[i]-\/>getCurrentXy().second << \textcolor{stringliteral}{"{})"{}} << std::endl;}
+\DoxyCodeLine{322                     \}}
+\DoxyCodeLine{323                     \textcolor{keywordflow}{if} (myVessel.Aircraft[i]-\/>getAirplane()-\/>getActive() == \textcolor{keyword}{true} \&\& myVessel.Aircraft[i]-\/>getAirplane()-\/>getType() == \textcolor{charliteral}{'S'}) \{}
+\DoxyCodeLine{324                         std::cout << \textcolor{stringliteral}{"{}Stormtrooper:"{}} << std::endl;}
+\DoxyCodeLine{325                         std::cout << i << \textcolor{stringliteral}{"{} -\/ Hp:"{}} << myVessel.Aircraft[i]-\/>getHp() << \textcolor{stringliteral}{"{}    |   ("{}}}
+\DoxyCodeLine{326                             << myVessel.Aircraft[i]-\/>getAirplane()-\/>getCurrentXy().first << \textcolor{stringliteral}{"{}; "{}}}
+\DoxyCodeLine{327                             << myVessel.Aircraft[i]-\/>getAirplane()-\/>getCurrentXy().second << \textcolor{stringliteral}{"{})"{}} << std::endl;}
+\DoxyCodeLine{328                     \}}
+\DoxyCodeLine{329 }
+\DoxyCodeLine{330 }
+\DoxyCodeLine{331                 \}}
+\DoxyCodeLine{332             \}}
+\DoxyCodeLine{333         \}}
+\DoxyCodeLine{334     \}}
+\DoxyCodeLine{335 }
+\DoxyCodeLine{342     \mbox{\hyperlink{class_my_vector}{MyVector<Airplane*>}} \mbox{\hyperlink{class_table_ad62a16e1eb003c707a6734b81b2ba192}{returnAirplane}}(\mbox{\hyperlink{struct_table_vessel}{TableVessel}} *vessels,\textcolor{keywordtype}{bool} active) \{}
+\DoxyCodeLine{343         \mbox{\hyperlink{class_my_vector}{MyVector<Airplane*>}} airplane;}
+\DoxyCodeLine{344         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < vessels-\/>Aircraft.size(); i++) \{}
+\DoxyCodeLine{345             \textcolor{keywordflow}{if} (vessels-\/>Aircraft[i] == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{346                 std::cout << \textcolor{stringliteral}{"{}returnAirplane"{}};}
+\DoxyCodeLine{347             \textcolor{keywordflow}{if} (vessels-\/>Aircraft[i]-\/>getAirplane() != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{348                 \textcolor{keywordflow}{if} (vessels-\/>Aircraft[i]-\/>getAirplane()-\/>getActive() == active) \{}
+\DoxyCodeLine{349                     airplane.push\_back(vessels-\/>Aircraft[i]-\/>getAirplane());}
+\DoxyCodeLine{350                 \}}
+\DoxyCodeLine{351 }
+\DoxyCodeLine{352             \}}
+\DoxyCodeLine{353         \}}
+\DoxyCodeLine{354         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < vessels-\/>AirCruiser.size(); i++) \{}
+\DoxyCodeLine{355             \textcolor{keywordflow}{if} (vessels-\/>AirCruiser[i]-\/>getAirplane() != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{356                 \textcolor{keywordflow}{if} (vessels-\/>AirCruiser[i] == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{357                 std::cout << \textcolor{stringliteral}{"{}returnAirplane"{}};}
+\DoxyCodeLine{358                 \textcolor{keywordflow}{if} (vessels-\/>AirCruiser[i]-\/>getAirplane()-\/>getActive() == active) \{}
+\DoxyCodeLine{359                     airplane.push\_back(vessels-\/>AirCruiser[i]-\/>getAirplane());}
+\DoxyCodeLine{360                 \}}
+\DoxyCodeLine{361 }
+\DoxyCodeLine{362             \}}
+\DoxyCodeLine{363         \}}
+\DoxyCodeLine{364         \textcolor{keywordflow}{return} airplane;}
+\DoxyCodeLine{365     \}}
+\DoxyCodeLine{366 }
+\DoxyCodeLine{367     \textcolor{keywordtype}{void} createRandomFlot(\textcolor{keyword}{const} std::string\& who) \{}
+\DoxyCodeLine{368         \textcolor{keywordtype}{int} costCarrier = 70;}
+\DoxyCodeLine{369         \textcolor{keywordflow}{if} (who == \textcolor{stringliteral}{"{}my"{}}) \{}
+\DoxyCodeLine{370             \textcolor{keywordtype}{int} j = (rand() \% (myMoney / (costCarrier)))+8;}
+\DoxyCodeLine{371             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < j; i++) \{}
+\DoxyCodeLine{372                 \textcolor{keywordtype}{int} k;}
+\DoxyCodeLine{373                 k = rand() \% 3;}
+\DoxyCodeLine{374                 \textcolor{keywordflow}{if} (k == 0) \{}
+\DoxyCodeLine{375                     addVessels(\textcolor{charliteral}{'A'}, rand() \% weight, \textcolor{stringliteral}{"{}my"{}});}
+\DoxyCodeLine{376                 \}}
+\DoxyCodeLine{377                 \textcolor{keywordflow}{if} (k == 1) \{}
+\DoxyCodeLine{378                     addVessels(\textcolor{charliteral}{'B'}, rand() \% weight, \textcolor{stringliteral}{"{}my"{}});}
+\DoxyCodeLine{379                 \}}
+\DoxyCodeLine{380                 \textcolor{keywordflow}{if} (k == 2) \{}
+\DoxyCodeLine{381                     addVessels(\textcolor{charliteral}{'D'}, rand() \% weight, \textcolor{stringliteral}{"{}my"{}});}
+\DoxyCodeLine{382                 \}}
+\DoxyCodeLine{383 }
+\DoxyCodeLine{384             \}}
+\DoxyCodeLine{385         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{386             \textcolor{keywordtype}{int} j = (rand() \% (opponentMoney / (costCarrier))) + 8;}
+\DoxyCodeLine{387             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < j; i++) \{}
+\DoxyCodeLine{388                 \textcolor{keywordtype}{int} k = rand() \% 3;}
+\DoxyCodeLine{389                 \textcolor{keywordflow}{if} (k == 0) \{}
+\DoxyCodeLine{390                     addVessels(\textcolor{charliteral}{'a'}, rand() \% weight, \textcolor{stringliteral}{"{}oponent"{}});}
+\DoxyCodeLine{391                 \}}
+\DoxyCodeLine{392                 \textcolor{keywordflow}{if} (k == 1) \{}
+\DoxyCodeLine{393                     addVessels(\textcolor{charliteral}{'b'}, rand() \% weight, \textcolor{stringliteral}{"{}oponent"{}});}
+\DoxyCodeLine{394 }
+\DoxyCodeLine{395                 \}}
+\DoxyCodeLine{396                 \textcolor{keywordflow}{if} (k == 2) \{}
+\DoxyCodeLine{397                     addVessels(\textcolor{charliteral}{'d'}, rand() \% weight, \textcolor{stringliteral}{"{}oponent"{}});}
+\DoxyCodeLine{398 }
+\DoxyCodeLine{399                 \}}
+\DoxyCodeLine{400             \}}
+\DoxyCodeLine{401 }
+\DoxyCodeLine{402         \}}
+\DoxyCodeLine{403     \}}
+\DoxyCodeLine{404 }
+\DoxyCodeLine{405     \mbox{\hyperlink{struct_table_vessel}{TableVessel}} *getMyOpponentVessel() \{}
+\DoxyCodeLine{406         \textcolor{keywordflow}{return} \&myOpponentVessel;}
+\DoxyCodeLine{407     \}}
+\DoxyCodeLine{408 }
+\DoxyCodeLine{409     \mbox{\hyperlink{struct_table_vessel}{TableVessel}} *getMyVessel() \{}
+\DoxyCodeLine{410         \textcolor{keywordflow}{return} \&myVessel;}
+\DoxyCodeLine{411     \}}
+\DoxyCodeLine{412 }
+\DoxyCodeLine{413 \};}
+\DoxyCodeLine{414 }
+
+\end{DoxyCode}

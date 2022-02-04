@@ -1,0 +1,91 @@
+\hypertarget{_airplane_8h_source}{}\doxysection{Airplane.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Vessel.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Object.h"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_airplane}{Airplane}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_object}{Object}} \{}
+\DoxyCodeLine{9 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{10     \textcolor{keywordtype}{bool} active;}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_armament}{Armament}} *mass;}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_vessel}{Vessel}} *parent;}
+\DoxyCodeLine{13     \textcolor{keywordtype}{int} attackHp;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \mbox{\hyperlink{class_airplane}{Airplane}}(\textcolor{keywordtype}{int} hp, std::pair<int, int >currentXy, \textcolor{keywordtype}{int} price, \textcolor{keywordtype}{char} type, \textcolor{keywordtype}{int} longes, \textcolor{keywordtype}{int} attackHp, \textcolor{keywordtype}{int} speed, \textcolor{keywordtype}{bool} who,}
+\DoxyCodeLine{18     \textcolor{keywordtype}{bool} active,}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_armament}{Armament}}* mass,}
+\DoxyCodeLine{20     \mbox{\hyperlink{class_vessel}{Vessel}}* parent}
+\DoxyCodeLine{21     ) : \mbox{\hyperlink{class_object}{Object}}(hp,currentXy,price,type,longes,speed,who) \{}
+\DoxyCodeLine{22         this-\/>active = \textcolor{keyword}{false};}
+\DoxyCodeLine{23         this-\/>mass = mass;}
+\DoxyCodeLine{24         this-\/>parent = parent;}
+\DoxyCodeLine{25         this-\/>attackHp = attackHp;}
+\DoxyCodeLine{26     \}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keywordtype}{bool} getActive()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{29         \textcolor{keywordflow}{return} active;}
+\DoxyCodeLine{30     \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} attack(\mbox{\hyperlink{class_object}{Object}} *X) = 0;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \mbox{\hyperlink{class_armament}{Armament}} *getMass() \{}
+\DoxyCodeLine{35         \textcolor{keywordflow}{return} mass;}
+\DoxyCodeLine{36     \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{keywordtype}{void} setActive(\textcolor{keywordtype}{bool} active) \{}
+\DoxyCodeLine{39         this-\/>active = active;}
+\DoxyCodeLine{40     \}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \mbox{\hyperlink{class_vessel}{Vessel}} *getParent() \{}
+\DoxyCodeLine{43         \textcolor{keywordflow}{return} parent;}
+\DoxyCodeLine{44     \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} setParent(\mbox{\hyperlink{class_vessel}{Vessel}} *ves) \{}
+\DoxyCodeLine{47         this-\/>parent = ves;}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{int} getPrice() \{}
+\DoxyCodeLine{51         \textcolor{keywordflow}{return} price;}
+\DoxyCodeLine{52     \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{bool} getActive() \{}
+\DoxyCodeLine{55         \textcolor{keywordflow}{return} active;}
+\DoxyCodeLine{56     \}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keywordtype}{int} getAttackHp() \{}
+\DoxyCodeLine{59         \textcolor{keywordflow}{return} attackHp;}
+\DoxyCodeLine{60     \}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{char} type,\textcolor{keywordtype}{int} x)\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{63         \textcolor{keywordflow}{if} (x <= speed) \{}
+\DoxyCodeLine{64             \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'C'} || type == \textcolor{charliteral}{'S'}) \{}
+\DoxyCodeLine{65                 this-\/>currentXy.second -\/= x;}
+\DoxyCodeLine{66             \}}
+\DoxyCodeLine{67             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{68                 this-\/>currentXy.second += x;}
+\DoxyCodeLine{69         \}}
+\DoxyCodeLine{70         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{71             \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'C'} || type == \textcolor{charliteral}{'S'}) \{}
+\DoxyCodeLine{72                 this-\/>currentXy.second -\/= speed;}
+\DoxyCodeLine{73             \}}
+\DoxyCodeLine{74             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{75                 this-\/>currentXy.second += speed;}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77         \}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79     \}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     \mbox{\hyperlink{class_airplane}{\string~Airplane}}() \{}
+\DoxyCodeLine{82      \textcolor{keyword}{delete} mass;}
+\DoxyCodeLine{83     \}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \};}
+\DoxyCodeLine{86 }
+
+\end{DoxyCode}

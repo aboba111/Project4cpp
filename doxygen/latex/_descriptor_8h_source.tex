@@ -1,0 +1,63 @@
+\hypertarget{_descriptor_8h_source}{}\doxysection{Descriptor.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include"{}Table.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include"{}Parametres.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_descriptor}{Descriptor}} \{}
+\DoxyCodeLine{8 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{9     \mbox{\hyperlink{class_table}{Table}}* X=\textcolor{keyword}{nullptr};}
+\DoxyCodeLine{10     \textcolor{keywordtype}{int} damage=0;}
+\DoxyCodeLine{11     \textcolor{keywordtype}{int} lostMoney = 0;}
+\DoxyCodeLine{12     \textcolor{keywordtype}{int} numMoney=10000;}
+\DoxyCodeLine{13     \textcolor{keywordtype}{int} coordinate = 2;}
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \textcolor{keywordtype}{void} byObject(\textcolor{keywordtype}{char} type) \{}
+\DoxyCodeLine{16         \textcolor{keywordflow}{if}(type==\textcolor{charliteral}{'A'})}
+\DoxyCodeLine{17         numMoney -\/=priceAircraft;}
+\DoxyCodeLine{18         \textcolor{keywordflow}{if}(type==\textcolor{charliteral}{'B'})}
+\DoxyCodeLine{19         numMoney -\/= priceArmed;}
+\DoxyCodeLine{20         \textcolor{keywordflow}{if}(type==\textcolor{charliteral}{'D'})}
+\DoxyCodeLine{21         numMoney -\/= priceAirCruiser;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} byPattron(\textcolor{keywordtype}{int} price) \{}
+\DoxyCodeLine{27         numMoney-\/=price ;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \}}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} addDamage(\textcolor{keywordtype}{int} x) \{}
+\DoxyCodeLine{31         lostMoney += x;}
+\DoxyCodeLine{32     \}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} win(\textcolor{keywordtype}{int} y,\textcolor{keywordtype}{bool} who) \{}
+\DoxyCodeLine{35         \textcolor{keywordflow}{if} (who) \{}
+\DoxyCodeLine{36             \textcolor{keywordflow}{if} (y < coordinate)}
+\DoxyCodeLine{37                 std::cout << \textcolor{stringliteral}{"{}you wine"{}} << std::endl;}
+\DoxyCodeLine{38         \}}
+\DoxyCodeLine{39         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{40             \textcolor{keywordflow}{if} (y <= 0)}
+\DoxyCodeLine{41                 std::cout << \textcolor{stringliteral}{"{}you lose"{}} << std::endl;}
+\DoxyCodeLine{42         \}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \};}
+\DoxyCodeLine{45    }
+\DoxyCodeLine{46     \mbox{\hyperlink{class_table}{Table}}* getDesk() \{}
+\DoxyCodeLine{47         \textcolor{keywordflow}{return} X;}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} setDesk(\mbox{\hyperlink{class_table}{Table}}* table) \{}
+\DoxyCodeLine{50         X = table;}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \}}
+\DoxyCodeLine{53     \textcolor{keywordtype}{int} getMoney() \{}
+\DoxyCodeLine{54         \textcolor{keywordflow}{return} numMoney;}
+\DoxyCodeLine{55     \}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \};}
+\DoxyCodeLine{58 }
+
+\end{DoxyCode}

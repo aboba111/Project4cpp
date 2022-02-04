@@ -1,0 +1,83 @@
+\hypertarget{_aircraft__carrier_8h_source}{}\doxysection{Aircraft\+\_\+carrier.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Vessel.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Airplane.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Fighter.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Stormtrooper.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Parametres.h"{}}}
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}} : \textcolor{keyword}{virtual} \textcolor{keyword}{public} \mbox{\hyperlink{class_vessel}{Vessel}} \{}
+\DoxyCodeLine{10 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_airplane}{Airplane}} *plane;}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}}(\textcolor{keywordtype}{int} hp, std::pair<int, int> currentXy, \textcolor{keywordtype}{int} price, \textcolor{keywordtype}{char} type, \textcolor{keywordtype}{int} longes, \textcolor{keywordtype}{int} speed, \textcolor{keywordtype}{bool} who, std::string nameVessel) :\mbox{\hyperlink{class_vessel}{Vessel}}(hp, currentXy, price, type, longes, speed, who, nameVessel, \textcolor{keyword}{new} \mbox{\hyperlink{class_warehouse}{Warehouse}}) \{}
+\DoxyCodeLine{13         \textcolor{keywordflow}{if} (rand() \% 2) \{}
+\DoxyCodeLine{14             \textcolor{keywordflow}{if} (who == \textcolor{keyword}{true})}
+\DoxyCodeLine{15                 this-\/>plane = \textcolor{keyword}{new} \mbox{\hyperlink{class_fighter}{Fighter}}(currentXy, \textcolor{charliteral}{'C'}, who, \textcolor{keyword}{this});}
+\DoxyCodeLine{16             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{17                 this-\/>plane = \textcolor{keyword}{new} \mbox{\hyperlink{class_fighter}{Fighter}}(currentXy, \textcolor{charliteral}{'c'}, who, \textcolor{keyword}{this});}
+\DoxyCodeLine{18         \}}
+\DoxyCodeLine{19         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{20             \textcolor{keywordflow}{if} (who == \textcolor{keyword}{true})}
+\DoxyCodeLine{21                 this-\/>plane = \textcolor{keyword}{new} \mbox{\hyperlink{class_stormtrooper}{Stormtrooper}}(currentXy, \textcolor{charliteral}{'S'}, who, \textcolor{keyword}{this});}
+\DoxyCodeLine{22             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{23                 this-\/>plane = \textcolor{keyword}{new} \mbox{\hyperlink{class_stormtrooper}{Stormtrooper}}(currentXy, \textcolor{charliteral}{'s'}, who, \textcolor{keyword}{this});}
+\DoxyCodeLine{24         \}}
+\DoxyCodeLine{25     \}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{public}:}
+\DoxyCodeLine{28     \mbox{\hyperlink{class_aircraft__carrier}{Aircraft\_carrier}}(std::pair<int,int>currentXy,\textcolor{keywordtype}{char} type,\textcolor{keywordtype}{bool} who,std::string nameVessel) : \mbox{\hyperlink{class_vessel}{Vessel}}(hpAircraft, currentXy, priceAircraft, type, longesAircraft, speedAircraft, who, nameVessel, \textcolor{keyword}{new} \mbox{\hyperlink{class_warehouse}{Warehouse}})\{}
+\DoxyCodeLine{29      }
+\DoxyCodeLine{30         \textcolor{keywordflow}{if} (rand() \% 2) \{}
+\DoxyCodeLine{31             \textcolor{keywordflow}{if}(who==\textcolor{keyword}{true})}
+\DoxyCodeLine{32             this-\/>plane = \textcolor{keyword}{new} \mbox{\hyperlink{class_fighter}{Fighter}}(currentXy,\textcolor{charliteral}{'C'}, who, \textcolor{keyword}{this});}
+\DoxyCodeLine{33             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{34             this-\/>plane = \textcolor{keyword}{new} \mbox{\hyperlink{class_fighter}{Fighter}}(currentXy, \textcolor{charliteral}{'c'}, who, \textcolor{keyword}{this});}
+\DoxyCodeLine{35         \}}
+\DoxyCodeLine{36         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{37             \textcolor{keywordflow}{if} (who == \textcolor{keyword}{true})}
+\DoxyCodeLine{38             this-\/>plane = \textcolor{keyword}{new} \mbox{\hyperlink{class_stormtrooper}{Stormtrooper}}(currentXy,\textcolor{charliteral}{'S'}, who, \textcolor{keyword}{this});}
+\DoxyCodeLine{39             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{40             this-\/>plane = \textcolor{keyword}{new} \mbox{\hyperlink{class_stormtrooper}{Stormtrooper}}(currentXy, \textcolor{charliteral}{'s'}, who, \textcolor{keyword}{this});}
+\DoxyCodeLine{41         \}}
+\DoxyCodeLine{42     \}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \mbox{\hyperlink{class_airplane}{Airplane}} *getAirplane() \{}
+\DoxyCodeLine{45         \textcolor{keywordflow}{return} plane;}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} setAirplane(\mbox{\hyperlink{class_airplane}{Airplane}} *air) \{}
+\DoxyCodeLine{49         plane = air;}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     \textcolor{keywordtype}{void} refreshLung()\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{54         \textcolor{keywordflow}{if} (plane-\/>getType() == \textcolor{charliteral}{'c'} || plane-\/>getType() == \textcolor{charliteral}{'C'})}
+\DoxyCodeLine{55             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{56         \mbox{\hyperlink{class_armament}{Armament}}* lung =plane-\/>getMass();}
+\DoxyCodeLine{57         \textcolor{keywordflow}{if} (!plane-\/>getActive()) \{}
+\DoxyCodeLine{58             typeWarehouse-\/>AddPatronToWarehouse((lung-\/>addPattron(typeWarehouse-\/>getSomePatronLung(lung-\/>getMaxAmmunition()))), \textcolor{stringliteral}{"{}lung"{}});}
+\DoxyCodeLine{59         \}}
+\DoxyCodeLine{60     \}}
+\DoxyCodeLine{61     \textcolor{keywordtype}{void} refreshHeavy()\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{62         \textcolor{keywordflow}{if} (plane-\/>getType() == \textcolor{charliteral}{'s'} || plane-\/>getType() == \textcolor{charliteral}{'S'})}
+\DoxyCodeLine{63             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{64         \mbox{\hyperlink{class_armament}{Armament}}* heavy = plane-\/>getMass();}
+\DoxyCodeLine{65         \textcolor{keywordflow}{if} (!plane-\/>getActive()) \{}
+\DoxyCodeLine{66             typeWarehouse-\/>AddPatronToWarehouse((heavy-\/>addPattron(typeWarehouse-\/>getSomePatronLung(heavy-\/>getMaxAmmunition()))), \textcolor{stringliteral}{"{}heavy"{}});}
+\DoxyCodeLine{67         \}}
+\DoxyCodeLine{68     \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} startAirplane() \{}
+\DoxyCodeLine{71         plane-\/>setActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{72     \}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     \mbox{\hyperlink{class_aircraft__carrier}{\string~Aircraft\_carrier}}() \{}
+\DoxyCodeLine{75         \textcolor{keyword}{delete} plane;}
+\DoxyCodeLine{76     \}}
+\DoxyCodeLine{77 \};}
+\DoxyCodeLine{78 }
+
+\end{DoxyCode}

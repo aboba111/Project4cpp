@@ -1,0 +1,95 @@
+\hypertarget{_object_8h_source}{}\doxysection{Object.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include<iostream>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{class_object}{Object}} \{}
+\DoxyCodeLine{6 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{7     \textcolor{keywordtype}{int} hp;}
+\DoxyCodeLine{8     std::pair<int, int> currentXy;}
+\DoxyCodeLine{9     \textcolor{keywordtype}{int} price;}
+\DoxyCodeLine{10     \textcolor{keywordtype}{char} type;}
+\DoxyCodeLine{11     \textcolor{keywordtype}{int} longes;}
+\DoxyCodeLine{12     \textcolor{keywordtype}{int} speed;}
+\DoxyCodeLine{13     \textcolor{keywordtype}{bool} who;}
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{comment}{//Object() \{\};}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \mbox{\hyperlink{class_object}{Object}}(\textcolor{keywordtype}{int} hp,}
+\DoxyCodeLine{19     std::pair <int, int> currentXy,}
+\DoxyCodeLine{20     \textcolor{keywordtype}{int} price,}
+\DoxyCodeLine{21     \textcolor{keywordtype}{char} type,}
+\DoxyCodeLine{22     \textcolor{keywordtype}{int} longes,}
+\DoxyCodeLine{23     \textcolor{keywordtype}{int} speed,}
+\DoxyCodeLine{24     \textcolor{keywordtype}{bool} who) \{}
+\DoxyCodeLine{25         this-\/>hp=hp;}
+\DoxyCodeLine{26         this-\/> currentXy= currentXy;}
+\DoxyCodeLine{27         this-\/> price= price;}
+\DoxyCodeLine{28         this-\/> type= type;}
+\DoxyCodeLine{29         this-\/> longes= longes;}
+\DoxyCodeLine{30         this-\/> speed= speed;}
+\DoxyCodeLine{31         this-\/> who=who;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{char} type,\textcolor{keywordtype}{int} x) = 0;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} setType(\textcolor{keywordtype}{char} type) \{}
+\DoxyCodeLine{38         this-\/>type = type;}
+\DoxyCodeLine{39     \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} setSpeed(\textcolor{keywordtype}{int} x) \{}
+\DoxyCodeLine{42         speed = x;}
+\DoxyCodeLine{43     \}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} setCurrentXy(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y) \{}
+\DoxyCodeLine{46         this-\/>currentXy.first = x;}
+\DoxyCodeLine{47         this-\/>currentXy.second = y;}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{bool} getWho() \{}
+\DoxyCodeLine{51         \textcolor{keywordflow}{return} who;}
+\DoxyCodeLine{52     \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     std::pair<int, int> getCurrentXy() \{}
+\DoxyCodeLine{55         \textcolor{keywordflow}{return} currentXy;}
+\DoxyCodeLine{56     \};}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keywordtype}{int} getSpeed() \{}
+\DoxyCodeLine{59         \textcolor{keywordflow}{return} speed;}
+\DoxyCodeLine{60     \}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \textcolor{keywordtype}{void} getDamage(\textcolor{keywordtype}{int} x) \{}
+\DoxyCodeLine{63         this-\/>hp -\/= x;}
+\DoxyCodeLine{64     \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \textcolor{keywordtype}{int} getHp() \{}
+\DoxyCodeLine{67         \textcolor{keywordflow}{return} hp;}
+\DoxyCodeLine{68     \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{keywordtype}{char} getType() \{}
+\DoxyCodeLine{71         \textcolor{keywordflow}{return} type;}
+\DoxyCodeLine{72     \}}
+\DoxyCodeLine{73     \textcolor{keywordtype}{int} getPrice() \{}
+\DoxyCodeLine{74         \textcolor{keywordflow}{return} price;}
+\DoxyCodeLine{75     \}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{keywordtype}{int} getLonges() \{}
+\DoxyCodeLine{78         \textcolor{keywordflow}{return} longes;}
+\DoxyCodeLine{79     \}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81   \textcolor{comment}{/*  int getAttackHp() \{}}
+\DoxyCodeLine{82 \textcolor{comment}{        return attackHp;}}
+\DoxyCodeLine{83 \textcolor{comment}{    \}*/}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{keywordtype}{void} setWho(\textcolor{keywordtype}{bool} x) \{}
+\DoxyCodeLine{86         who = x;}
+\DoxyCodeLine{87     \}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \};}
+\DoxyCodeLine{90 }
+
+\end{DoxyCode}

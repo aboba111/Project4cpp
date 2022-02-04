@@ -1,0 +1,32 @@
+\hypertarget{_stormtrooper_8h_source}{}\doxysection{Stormtrooper.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include"{}Airplane.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Parametres.h"{}}}
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{class_stormtrooper}{Stormtrooper}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_airplane}{Airplane}} \{}
+\DoxyCodeLine{6 \textcolor{keyword}{public}:}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8     \mbox{\hyperlink{class_stormtrooper}{Stormtrooper}}(std::pair<int, int >currentXy, \textcolor{keywordtype}{char} type, \textcolor{keywordtype}{bool} who,}
+\DoxyCodeLine{9         \mbox{\hyperlink{class_vessel}{Vessel}}* parent) : \mbox{\hyperlink{class_airplane}{Airplane}}(hpStormtrooper, currentXy, priceStormtrooper, type, longesStormtrooper, attackHpStormtrooper, speedStormtrooper, who, active, \textcolor{keyword}{new} \mbox{\hyperlink{class_armament}{Armament}}(maxAmmunitionStormtrooper, currentAmmunitionStormtrooper, pattronPrice, pattronLungDamageStormtrooper, volumForAttackStormtrooper), parent) \{}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13     \textcolor{keywordtype}{void} attack(\mbox{\hyperlink{class_object}{Object}} *M)\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{14         \textcolor{keywordflow}{if} (M-\/>getType() == \textcolor{charliteral}{'A'} || M-\/>getType() == \textcolor{charliteral}{'a'} || M-\/>getType() == \textcolor{charliteral}{'B'} || M-\/>getType() == \textcolor{charliteral}{'b'} ||}
+\DoxyCodeLine{15             M-\/>getType() == \textcolor{charliteral}{'D'} || M-\/>getType() == \textcolor{charliteral}{'d'}) \{}
+\DoxyCodeLine{16             \textcolor{keywordflow}{if} (mass-\/>getCurrentAmmunition() < mass-\/>getVolumForAttack())}
+\DoxyCodeLine{17                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{18             mass-\/>attack();}
+\DoxyCodeLine{19             M-\/>getDamage(mass-\/>attack());}
+\DoxyCodeLine{20         \}}
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23    \mbox{\hyperlink{class_stormtrooper}{\string~Stormtrooper}}()\{}
+\DoxyCodeLine{24         \textcolor{keyword}{delete} mass;}
+\DoxyCodeLine{25     \}}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 }
+
+\end{DoxyCode}

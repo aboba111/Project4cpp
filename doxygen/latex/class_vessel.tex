@@ -1,0 +1,61 @@
+\hypertarget{class_vessel}{}\doxysection{Vessel Class Reference}
+\label{class_vessel}\index{Vessel@{Vessel}}
+Inheritance diagram for Vessel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_vessel}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_vessel_a4131e5c5f8ec095af293bb65ecee841d}\label{class_vessel_a4131e5c5f8ec095af293bb65ecee841d}} 
+{\bfseries Vessel} (int hp, std\+::pair$<$ int, int $>$current\+Xy, int price, char type, int longes, int speed, bool who, std\+::string name\+Vessel, \mbox{\hyperlink{class_warehouse}{Warehouse}} $\ast$type\+Warehouse)
+\item 
+\mbox{\Hypertarget{class_vessel_a80220eb95cbf92d3bb59903a286a8a6c}\label{class_vessel_a80220eb95cbf92d3bb59903a286a8a6c}} 
+std\+::string {\bfseries get\+Name} ()
+\item 
+\mbox{\Hypertarget{class_vessel_aac18fef08f2a5d9c21389baffbdb48ce}\label{class_vessel_aac18fef08f2a5d9c21389baffbdb48ce}} 
+void {\bfseries set\+Name} (std\+::string name)
+\item 
+\mbox{\Hypertarget{class_vessel_a80919e0b511f03976c887b53ecb94c49}\label{class_vessel_a80919e0b511f03976c887b53ecb94c49}} 
+virtual void {\bfseries refresh\+Heavy} ()=0
+\item 
+\mbox{\Hypertarget{class_vessel_a1edaee426b4e25bfe365b1af4af7f5cf}\label{class_vessel_a1edaee426b4e25bfe365b1af4af7f5cf}} 
+virtual void {\bfseries refresh\+Lung} ()=0
+\item 
+\mbox{\Hypertarget{class_vessel_a5f9da2365b02260f48ed26d649157718}\label{class_vessel_a5f9da2365b02260f48ed26d649157718}} 
+void {\bfseries by\+Armament} (std\+::string type)
+\item 
+void \mbox{\hyperlink{class_vessel_aea52b09c3b1f603864dce5bb4116fc83}{move}} (char type, int x) override
+\item 
+\mbox{\Hypertarget{class_vessel_af0cd87d521624a01d2a57c5cf2b5d25b}\label{class_vessel_af0cd87d521624a01d2a57c5cf2b5d25b}} 
+\mbox{\hyperlink{class_warehouse}{Warehouse}} $\ast$ {\bfseries get\+Warehouse} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_vessel_aae61702225d19b6cc6369d63eb96f2d6}\label{class_vessel_aae61702225d19b6cc6369d63eb96f2d6}} 
+std\+::string {\bfseries name\+Vessel}
+\item 
+\mbox{\Hypertarget{class_vessel_ab86e1a144c87fa20812dcb1753e6b808}\label{class_vessel_ab86e1a144c87fa20812dcb1753e6b808}} 
+\mbox{\hyperlink{class_warehouse}{Warehouse}} $\ast$ {\bfseries type\+Warehouse}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_vessel_aea52b09c3b1f603864dce5bb4116fc83}\label{class_vessel_aea52b09c3b1f603864dce5bb4116fc83}} 
+\index{Vessel@{Vessel}!move@{move}}
+\index{move@{move}!Vessel@{Vessel}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Vessel\+::move (\begin{DoxyParamCaption}\item[{char}]{type,  }\item[{int}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_object}{Object}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vessel.\+h\end{DoxyCompactItemize}

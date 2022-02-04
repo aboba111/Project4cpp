@@ -1,0 +1,65 @@
+\hypertarget{_vessel_8h_source}{}\doxysection{Vessel.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Warehouse.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Object.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_vessel}{Vessel}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_object}{Object}} \{}
+\DoxyCodeLine{10 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{11     std::string nameVessel;}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_warehouse}{Warehouse}} *typeWarehouse;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_vessel}{Vessel}}(\textcolor{keywordtype}{int} hp, std::pair<int, int >currentXy, \textcolor{keywordtype}{int} price, \textcolor{keywordtype}{char} type, \textcolor{keywordtype}{int} longes,\textcolor{keywordtype}{int} speed,\textcolor{keywordtype}{bool} who,}
+\DoxyCodeLine{16     std::string nameVessel,}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_warehouse}{Warehouse}}* typeWarehouse) : \mbox{\hyperlink{class_object}{Object}}(hp,currentXy,price,type,longes,speed,who) \{}
+\DoxyCodeLine{18         this-\/>typeWarehouse = typeWarehouse;}
+\DoxyCodeLine{19         this-\/>nameVessel = nameVessel;}
+\DoxyCodeLine{20     \}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{comment}{//virtual void getDataAirplane(char type) \{\};//?}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     std::string getName() \{}
+\DoxyCodeLine{25         \textcolor{keywordflow}{return} nameVessel;}
+\DoxyCodeLine{26     \};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} setName(std::string name) \{}
+\DoxyCodeLine{29         this-\/>nameVessel = name;}
+\DoxyCodeLine{30     \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} refreshHeavy() = 0;}
+\DoxyCodeLine{33     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} refreshLung() = 0;}
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} byArmament(std::string type) \{}
+\DoxyCodeLine{35         typeWarehouse-\/>byArmament(type);}
+\DoxyCodeLine{36     \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{char} type,\textcolor{keywordtype}{int} x)\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{39         \textcolor{keywordflow}{if} (x <= speed) \{}
+\DoxyCodeLine{40             \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'a'} || type == \textcolor{charliteral}{'b'} || type == \textcolor{charliteral}{'d'})}
+\DoxyCodeLine{41                 this-\/>currentXy.second += x;}
+\DoxyCodeLine{42             \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'A'} || type == \textcolor{charliteral}{'B'} || type == \textcolor{charliteral}{'D'})}
+\DoxyCodeLine{43                 this-\/>currentXy.second -\/= x;}
+\DoxyCodeLine{44         \}}
+\DoxyCodeLine{45         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{46             \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'a'} || type == \textcolor{charliteral}{'b'} || type == \textcolor{charliteral}{'d'})}
+\DoxyCodeLine{47                 this-\/>currentXy.second += speed;}
+\DoxyCodeLine{48             \textcolor{keywordflow}{if} (type == \textcolor{charliteral}{'A'} || type == \textcolor{charliteral}{'B'} || type == \textcolor{charliteral}{'D'})}
+\DoxyCodeLine{49                 this-\/>currentXy.second -\/= speed;}
+\DoxyCodeLine{50         \}}
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     \mbox{\hyperlink{class_warehouse}{Warehouse}} *getWarehouse() \{}
+\DoxyCodeLine{54         \textcolor{keywordflow}{return} typeWarehouse;}
+\DoxyCodeLine{55     \}}
+\DoxyCodeLine{56     \mbox{\hyperlink{class_vessel}{\string~Vessel}}() \{}
+\DoxyCodeLine{57         \textcolor{keyword}{delete} typeWarehouse;}
+\DoxyCodeLine{58     \}}
+\DoxyCodeLine{59 \};}
+\DoxyCodeLine{60 }
+
+\end{DoxyCode}

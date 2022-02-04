@@ -12,44 +12,27 @@ protected:
     Warehouse *typeWarehouse;
 
 public:
-    Vessel(int hp, std::pair<int, int >currentXy, int price, char type, int longes,int speed,bool who,
-    std::string nameVessel,
-    Warehouse* typeWarehouse) : Object(hp,currentXy,price,type,longes,speed,who) {
-        this->typeWarehouse = typeWarehouse;
-        this->nameVessel = nameVessel;
-    }
+    Vessel(int hp, std::pair<int, int >currentXy, int price, char type, int longes, int speed, bool who,
+        std::string nameVessel,
+        Warehouse* typeWarehouse);
 
     //virtual void getDataAirplane(char type) {};//?
 
-    std::string getName() {
-        return nameVessel;
-    };
+    std::string getName();
 
-    void setName(std::string name) {
-        this->nameVessel = name;
-    }
+    void setName(std::string name);
 
     virtual void refreshHeavy() = 0;
     virtual void refreshLung() = 0;
+    void byArmament(std::string type);
+    /**
+     * @brief using the type determine how to move if x is not equal to speed,speed is x
+     * @param type object
+     * @param x parameter speed
+    */
+    void move(char type, int x) override;
 
-    void move(char type,int x) override {
-        if (x <= speed) {
-            if (type == 'a' || type == 'b' || type == 'd')
-                this->currentXy.second += x;
-            if (type == 'A' || type == 'B' || type == 'D')
-                this->currentXy.second -= x;
-        }
-        else {
-            if (type == 'a' || type == 'b' || type == 'd')
-                this->currentXy.second += speed;
-            if (type == 'A' || type == 'B' || type == 'D')
-                this->currentXy.second -= speed;
-        }
-    }
-
-    Warehouse *getWarehouse() {
-        return typeWarehouse;
-    }
+    Warehouse* getWarehouse();
     ~Vessel() {
         delete typeWarehouse;
     }

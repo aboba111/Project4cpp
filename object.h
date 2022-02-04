@@ -13,78 +13,40 @@ protected:
     bool who;
 public:
 
-    //Object() {};
 
     Object(int hp,
-    std::pair <int, int> currentXy,
-    int price,
-    char type,
-    int longes,
-    int speed,
-    bool who) {
-        this->hp=hp;
-        this-> currentXy= currentXy;
-        this-> price= price;
-        this-> type= type;
-        this-> longes= longes;
-        this-> speed= speed;
-        this-> who=who;
-
-    }
+        std::pair <int, int> currentXy,
+        int price,
+        char type,
+        int longes,
+        int speed,
+        bool who);
 
     virtual void move(char type,int x) = 0;
 
-    void setType(char type) {
-        this->type = type;
-    }
+    void setType(char type);
+    void setSpeed(int x);
 
-    void setSpeed(int x) {
-        speed = x;
-    }
+    void setCurrentXy(int x, int y);
 
-    void setCurrentXy(int x, int y) {
-        this->currentXy.first = x;
-        this->currentXy.second = y;
-    }
+    bool getWho();
 
-    bool getWho() {
-        return who;
-    }
+    std::pair<int, int> getCurrentXy();
 
-    std::pair<int, int> getCurrentXy() {
-        return currentXy;
-    };
+    int getSpeed();
 
-    int getSpeed() {
-        return speed;
-    }
+    void getDamage(int x);
 
-    void getDamage(int x) {
-        this->hp -= x;
-    }
+    int getHp();
 
-    int getHp() {
-        return hp;
-    }
+    char getType();
 
-    char getType() {
-        return type;
-    }
-    int getPrice() {
-        return price;
-    }
+    int getPrice();
 
-    int getLonges() {
-        return longes;
-    }
 
-  /*  int getAttackHp() {
-        return attackHp;
-    }*/
+    int getLonges();
 
-    void setWho(bool x) {
-        who = x;
-    }
+    void setWho(bool x);
 
 };
 

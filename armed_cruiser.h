@@ -13,62 +13,30 @@ protected:
     Armament *lung;
     Armament* heavy;
     int attackHp;
-    Armed_cruiser(int attackHp,int hp, std::pair<int, int> currentXy, int price, char type, int longes, int speed, bool who, std::string nameVessel) :Vessel(hp, currentXy, price, type, longes, speed, who, nameVessel, new Warehouse) {
-        this->heavy = new Heavy_Armament(maxAmmunitionArmed, currentHeavyAmmunitionArmed, pattronPrice, pattronHeavyDamageArmed, volumForAttackArmed);
-        this->lung = new Lung_Armament(maxAmmunitionArmed, currentLungAmmunitionArmed, pattronPrice, pattronLungDamageArmed, volumForAttackArmed);
-        this->attackHp = attackHp;
-    }
+    Armed_cruiser(int attackHp, int hp, std::pair<int, int> currentXy, int price, char type, int longes, int speed, bool who, std::string nameVessel);
+
 public:
-    Armed_cruiser(std::pair<int,int>currentXy,char type,bool who,std::string nameVessel) : Vessel(hpArmed,currentXy,priceArmed,type,longesArmed,speedArmed,who,nameVessel,new Warehouse) {
-        this->heavy = new Heavy_Armament(maxAmmunitionArmed, currentHeavyAmmunitionArmed, pattronPrice,pattronHeavyDamageArmed, volumForAttackArmed);
-        this->lung = new Lung_Armament(maxAmmunitionArmed, currentLungAmmunitionArmed, pattronPrice, pattronLungDamageArmed, volumForAttackArmed);
-        this->attackHp = attackHpArmed;
+    Armed_cruiser(std::pair<int, int>currentXy, char type, bool who, std::string nameVessel);
 
-    }
-
-   
-    void refreshLung() override {
-
-        typeWarehouse->AddPatronToWarehouse((lung->addPattron(typeWarehouse->getSomePatronLung(lung->getMaxAmmunition()))),"lung");
-
-    }
-    void refreshHeavy() override {
-
-        typeWarehouse->AddPatronToWarehouse((heavy->addPattron(typeWarehouse->getSomePatronHeavy(heavy->getMaxAmmunition()))),"heavy");
-
-    }
-
-    void attack(Object* M) {
-
-        if (M->getType() == 'c' || M->getType() == 'C' || M->getType() == 'S' || M->getType() == 's') {
-            if (getLung()->getCurrentAmmunition() < getLung()->getVolumForAttack())
-                return;
-            else {
-                M->getDamage(getLung()->attack());
-            }
-        }
-        else {
-            if (getHeavy()->getCurrentAmmunition() < getHeavy()->getVolumForAttack())
-                return;
-            else {
-                getLung()->attack();
-                M->getDamage(getHeavy()->attack());
-            }
-        }
-
-    }
+    /**
+     * @brief refresh ammunition,takes lung ammo from storage,if few of them take the rest
+    */
+    void refreshLung() override;
+    /**
+     * @brief refresh ammunition,takes heavy ammo from storage,if few of them take the rest
+    */
+    void refreshHeavy() override;
+    /**
+     * @brief takes an object and checks if it can be attacked,if hp<0 delete is called
+     * @param object being attacked
+    */
+    void attack(Object* M);
 
 
-    Armament *getLung() {
-        return lung;
-    }
-    Armament* getHeavy() {
-        return heavy;
-    }
+    Armament* getLung();
+    Armament* getHeavy();
 
-    int getAttackHp() {
-        return attackHp;
-    }
+    int getAttackHp();
 
     ~Armed_cruiser() {
         delete heavy;
